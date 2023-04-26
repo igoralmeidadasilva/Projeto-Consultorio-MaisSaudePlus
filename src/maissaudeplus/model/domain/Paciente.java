@@ -75,10 +75,6 @@ public class Paciente extends Pessoa{
 
     @Override
     public String toString() {
-        return "{" + "codPaciente=" + codPaciente + ", Nome= " + super.getNome() 
-                + "\n\tcpf=" + super.getCpf()+ ", E-mail= " + super.getEmail()
-                + "\n\tdataNascimento=" + dataNascimento + ", altura=" + altura 
-                + "\n\tpeso=" + peso + ", sexo=" + sexo 
-                + "\n\tTel= " + super.getTelefone() + "\n}";
-    }  
+        return super.getNome();
+    } 
 }

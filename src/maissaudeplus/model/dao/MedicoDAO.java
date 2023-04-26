@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package maissaudeplus.model.dao;
 
 import java.sql.Connection;
@@ -99,5 +94,26 @@ public class MedicoDAO {
             return false;
         }
     }
-
+    
+    public Medico buscar(Medico medico){
+        Medico retorno = new Medico();
+        String sql = "SELECT * FROM Medico WHERE codmedico=?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, medico.getCodMedico());
+            ResultSet resultado = stmt.executeQuery();
+            if(resultado.next()){
+                retorno.setCodMedico(resultado.getInt("codmedico"));
+                retorno.setCpf(resultado.getString("cpf"));
+                retorno.setCrmMedico(resultado.getString("crmmedico"));
+                retorno.setDataAdmissao(resultado.getDate("dataadmissao"));
+                retorno.setEmail(resultado.getString("email"));
+                retorno.setNome(resultado.getString("nomemedico"));
+                retorno.setTelefone(resultado.getString("telefone"));
+            }
+        } catch (SQLException e){
+            Logger.getLogger(MedicoDAO.class.getName()).log(Level.SEVERE, null, e);
+        }        
+        return retorno;
+    }
 }

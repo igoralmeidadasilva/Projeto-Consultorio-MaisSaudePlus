@@ -1,5 +1,7 @@
 package maissaudeplus.model.domain;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -38,17 +40,33 @@ public class Consulta {
     public LocalDate getDataConsulta() {
         return dataConsulta;
     }
+    
+    public Date getDataConsultaToDb() {
+        return Date.valueOf(dataConsulta);
+    }
 
     public void setDataConsulta(LocalDate dataConsulta) {
         this.dataConsulta = dataConsulta;
+    }
+    
+    public void setDataConsulta(Date dataConsulta) {
+        this.dataConsulta = dataConsulta.toLocalDate();
     }
 
     public LocalTime getHoraConsulta() {
         return horaConsulta;
     }
+    
+    public Time getHoraConsultaToDb() {
+        return Time.valueOf(horaConsulta);
+    }
 
     public void setHoraConsulta(LocalTime horaConsulta) {
         this.horaConsulta = horaConsulta;
+    }
+    
+    public void setHoraConsulta(Time horaConsulta) {
+        this.horaConsulta = horaConsulta.toLocalTime();
     }
 
     public int getDuracaoConsulta() {

@@ -1,5 +1,6 @@
 package maissaudeplus.model.domain;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Funcionario extends Pessoa {
@@ -30,5 +31,12 @@ public class Funcionario extends Pessoa {
     public void setDataAdmissao(LocalDate dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
+    public void setDataAdmissao(Date dataAdmissao){
+        this.dataAdmissao = dataAdmissao.toLocalDate();
+    }
 
+    @Override
+    public String toString() {
+        return super.getNome();
+    }
 }

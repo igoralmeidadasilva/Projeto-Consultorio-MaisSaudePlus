@@ -47,5 +47,10 @@ public class Medico extends Pessoa{
 
     public void setDataAdmissao(Date dataAdmissao) {
         this.dataAdmissao = dataAdmissao.toLocalDate();
-    }   
+    } 
+    
+    @Override
+    public String toString() {
+        return super.getNome();
+    }
 }

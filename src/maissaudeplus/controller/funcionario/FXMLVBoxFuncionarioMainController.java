@@ -73,7 +73,7 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
         //Método de configuração do botão que troca o anchor pane base pelo anchor pane de agendamentos.
         //Este método carrega a o Anchor Pane responsavel pelo agendamento de consultas.
         if(anchorPaneAgendarConsulta == null){
-            anchorPaneAgendarConsulta = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/funcionario/FXMLAnchorPaneFuncionarioAgendarConsulta.fxml"));
+            anchorPaneAgendarConsulta = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/funcionario/FXMLAnchorPaneFuncionarioVisualizarConsulta.fxml"));
         }
         //Os métodos abaixo configurão as restrições do anchor pane para que ele possa ser redimensionado
         AnchorPane.setTopAnchor(anchorPaneAgendarConsulta, 0.0);
