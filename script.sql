@@ -122,14 +122,14 @@ GRANT ALL ON paciente_codpaciente_seq, consulta_codconsulta_seq, consulta_funcio
 TO user_saudeplus;
 
 --Revogando permissões das tabelas
-REVOKE ALL ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario, Medicamento
-	FROM user_saudeplus;
+-- REVOKE ALL ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario, Medicamento
+-- 	FROM user_saudeplus;
 
---Revogando permissões das sequencias
-REVOKE ALL ON paciente_codpaciente_seq, consulta_codconsulta_seq, consulta_funcionario_codfuncionario_seq,
-			 consultarealizada_codconsultarealizada_seq, funcionario_codfuncionario_seq, gerarnotificacao_codgerarnotificacao_seq,
-			 medico_codmedico_seq, procedimento_codprocedimento_seq, medicamento_codmedicamento_seq
-	FROM user_saudeplus;
+-- --Revogando permissões das sequencias
+-- REVOKE ALL ON paciente_codpaciente_seq, consulta_codconsulta_seq, consulta_funcionario_codfuncionario_seq,
+-- 			 consultarealizada_codconsultarealizada_seq, funcionario_codfuncionario_seq, gerarnotificacao_codgerarnotificacao_seq,
+-- 			 medico_codmedico_seq, procedimento_codprocedimento_seq, medicamento_codmedicamento_seq
+-- 	FROM user_saudeplus;
 	
 -- Inserção de dados para popular a base de dados (Por enquanto, Pacientes e Médicos somente)
 INSERT INTO Medico (cpf, crmMedico, nomeMedico, dataAdmissao, email, telefone) 
