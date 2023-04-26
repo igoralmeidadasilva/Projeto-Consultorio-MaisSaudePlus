@@ -8,7 +8,8 @@ public class Paciente extends Pessoa{
     private LocalDate dataNascimento;
     private double altura;
     private double peso;
-    private char sexo;    
+    private char sexo;  
+    private int numConsultas;
     
     public Paciente(){}
     
@@ -71,6 +72,14 @@ public class Paciente extends Pessoa{
 
     public void setSexo(char sexo) {
         this.sexo = sexo;
+    }
+
+    public int getNumConsultas() {
+        return numConsultas;
+    }
+
+    public void setNumConsultas(int numConsultas) {
+        this.numConsultas = numConsultas;
     }
 
     @Override
