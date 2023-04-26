@@ -112,7 +112,7 @@ DROP USER IF EXISTS user_saudeplus;
 CREATE USER user_saudeplus WITH PASSWORD 'ifes2023';
 	
 --Grant para ceder permissão total as tabelas
-GRANT INSERT, SELECT, UPDATE, DELETE ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario 
+GRANT INSERT, SELECT, UPDATE, DELETE ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario, Medicamento
 	TO user_saudeplus;
 
 --Grant para ceder permissão nas sequencias de cada tabela
@@ -122,13 +122,13 @@ GRANT ALL ON paciente_codpaciente_seq, consulta_codconsulta_seq, consulta_funcio
 TO user_saudeplus;
 
 --Revogando permissões das tabelas
-REVOKE ALL ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario 
+REVOKE ALL ON Medico, Paciente, Procedimento, GerarNotificacao, Consulta, ConsultaRealizada, Funcionario, Medicamento
 	FROM user_saudeplus;
 
 --Revogando permissões das sequencias
 REVOKE ALL ON paciente_codpaciente_seq, consulta_codconsulta_seq, consulta_funcionario_codfuncionario_seq,
 			 consultarealizada_codconsultarealizada_seq, funcionario_codfuncionario_seq, gerarnotificacao_codgerarnotificacao_seq,
-			 medico_codmedico_seq, procedimento_codprocedimento_seq
+			 medico_codmedico_seq, procedimento_codprocedimento_seq, medicamento_codmedicamento_seq
 	FROM user_saudeplus;
 	
 -- Inserção de dados para popular a base de dados (Por enquanto, Pacientes e Médicos somente)
