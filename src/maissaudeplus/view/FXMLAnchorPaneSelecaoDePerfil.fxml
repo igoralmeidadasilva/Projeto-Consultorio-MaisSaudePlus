@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPaneBase" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #17D77E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.FXMLAnchorPaneSelecaoDePerfilController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="577.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/backgroung.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="3.0" layoutY="481.0" prefHeight="17.0" prefWidth="308.0" text="Software de gerenciamento Mais Saúde Plus version 2.0">
+         <font>
+            <Font name="Verdana" size="10.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="229.0" fitWidth="205.0" layoutX="633.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo1.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="buttonFuncionario" alignment="CENTER" layoutX="610.0" layoutY="319.0" onAction="#handleButtonLoadFuncionarios" prefHeight="41.0" prefWidth="252.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="FUNCIONÁRIO">
+         <font>
+            <Font name="Yu Gothic UI Light" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/assistant-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="buttonMedico" alignment="CENTER" layoutX="610.0" layoutY="367.0" onAction="#handleButtonLoadMedico" prefHeight="41.0" prefWidth="252.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="MÉDICO">
+         <font>
+            <Font name="Yu Gothic UI Light" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/doctor-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Hyperlink layoutX="685.0" layoutY="424.0" prefHeight="23.0" prefWidth="102.0" text="Precisa de ajuda?" />
+      <Label layoutX="633.0" layoutY="261.0" prefHeight="33.0" prefWidth="205.0" text="Por favor, escolha um perfil.">
+         <font>
+            <Font name="Yu Gothic UI Light" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

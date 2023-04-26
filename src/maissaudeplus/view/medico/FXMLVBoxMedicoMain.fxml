@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLVBoxMedicoMainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Cadastros">
+            <items>
+              <MenuItem mnemonicParsing="false" text="item" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Processos">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Item" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Gráficos">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Item" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Relátorios">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Item" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Trocar Usúario">
+               <items>
+                  <MenuItem fx:id="menuItemTrocarFuncionario" mnemonicParsing="false" onAction="#handleMenuItemTrocarFuncionario" text="Funcionário" />
+                  <MenuItem fx:id="menuItemTrocarMedico" mnemonicParsing="false" onAction="#handleMenuItemTrocarMedico" text="Médico" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <HBox prefHeight="376.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="572.0" prefWidth="275.0" styleClass="background">
+               <children>
+                  <ImageView fitHeight="106.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/doctor-black-128.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="80.0" right="80.0" top="30.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="276.0" text="Médico">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="18.0" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Button">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="18.0" prefHeight="52.0" prefWidth="604.0" styleClass="JFXButtonLateral" text="Button">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="18.0" prefHeight="52.0" prefWidth="348.0" text="Button">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="JFXButtonLateral" />
+                        <String fx:value="JFXButtonLateral" />
+                     </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="18.0" prefHeight="52.0" prefWidth="334.0" styleClass="JFXButtonLateral" text="Button">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true">
+                           <image>
+                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="buttonClose" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonClose" prefHeight="52.0" prefWidth="400.0" styleClass="JFXButtonLateral" text="Sair">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true">
+                           <image>
+                              <Image url="@../icons/logout_FILL1_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="anchorPaneBase" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+               <children>
+                  <Pane prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView disable="true" fitHeight="281.0" fitWidth="281.0" layoutX="311.0" layoutY="267.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <image>
+                        <Image url="@../icons/batimento-cardiaco.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

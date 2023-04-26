@@ -1,0 +1,180 @@
+/*Cor básica do software*/
+.background{
+    -fx-background-color: #17d77e;
+}
+
+/*Referente a barra de menu do software*/
+.menu-bar {
+    -fx-background-color: derive(#287d3d,20%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: whitesmoke;
+}
+
+.menu-bar .context-menu .label{
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: whitesmoke;
+    -fx-text-fill: #000000;
+}
+/*Referente ao botão do menu lateral esquerdo*/
+.JFXButtonLateral{
+    -fx-background-color:#17d77e;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-text-fill: #000000;
+}
+
+.JFXButtonLateral:hover{
+    -fx-background-color : #414bc4;
+}
+.JFXButtonLateral:pressed{
+    -fx-background-color : #3a43ba;
+}
+
+/* Referente ao botão de "Confirmar" do software*/
+.JFXButtonConfirmar{
+    -fx-background-color:#77A642;
+    -fx-background-radius: 8;
+    -fx-color: #333333;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonInserir{
+    -fx-background-color:#4287f5;
+    -fx-background-radius: 8;
+    -fx-color: #333333;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+    -fx-border-width: 0.8;   
+}
+.JFXButtonInserir:hover{
+    -fx-background-color: #414bc4;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+    
+}
+
+.JFXButtonInserir:pressed{
+    -fx-background-color: #3a43ba;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+    
+}
+
+/* Referente ao botão de "Alterar" do software*/
+.JFXButtonAlterar{
+    -fx-background-color:#F67451;
+    -fx-background-radius: 8;
+    -fx-color: #333333;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonAlterar:hover{
+    -fx-background-color: #414bc4;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonAlterar:pressed{
+    -fx-background-color: #3a43ba;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonConfirmar:hover{
+    -fx-background-color : #414bc4;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonConfirmar:pressed{
+    -fx-background-color : #3a43ba;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+
+/* Referente ao botão de "Remover" do software*/
+.JFXButtonRemover{
+    -fx-background-color:#FF4242;
+    -fx-background-radius: 8;
+    -fx-color: #333333;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+    -fx-border-width: 0.8; 
+}
+
+.JFXButtonRemover:hover{
+    -fx-background-color: #414bc4;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+.JFXButtonRemover:pressed{
+    -fx-background-color :  #3a43ba;
+    -fx-background-radius: 8;
+    -fx-border-width: 0.8; 
+}
+
+/* Referente ao split pane, basicamente torna menor a divisoria*/
+.split-pane .split-pane-divider {
+    -fx-padding: 0 1 0 1;
+}
+
+/* Referente aos labels que vão mostrar informações provenientes do banco*/
+.labelInformacoes{
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0 0 0.8 0;
+}
+
+/*Referente as tableviews usadas no software*/
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #08005C; 
+}
+
+.table-view .column-header .label{
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 13;
+    -fx-text-fill: white;
+    -fx-font-weight: bold; 
+}
+
+.table-view .cell{
+    -fx-cell-size: 25;
+    -fx-alignment: center;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #5d2b9e; 
+    -fx-text-background-color:#FFFFFF;
+}
+
+.searchableComboBox{
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 0.6 0;
+    -fx-border-style: solid;
+    -fx-border-insets: -1;
+}
