@@ -66,6 +66,8 @@ public class FXMLAnchorPaneFuncionarioAlterarMedicoDialogController implements I
         this.textFieldCPF.setText(medico.getCpf());
         this.textFieldCrm.setText(medico.getCrmMedico());
         this.datePickerDataAdmissao.setValue(medico.getDataAdmissao());
+        this.textFieldEmail.setText(medico.getEmail());
+        this.textFieldTelefone.setText(medico.getTelefone());
     }
 
     public boolean isButtonConfirmarClicked() {
