@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.funcionario.FXMLAnchorPaneFuncionarioVisualizarConsultaController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <SplitPane dividerPositions="0.4" layoutX="158.0" layoutY="51.0" prefHeight="549.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableViewConsultas" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="tableColumnConsultaCodigo" prefWidth="75.0" text="Código" />
+                        <TableColumn fx:id="tableColumnConsultaPacienteNome" prefWidth="75.0" text="Paciente" />
+                        <TableColumn fx:id="tableColumnConsultaData" prefWidth="75.0" text="Data" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView disable="true" fitHeight="281.0" fitWidth="281.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <image>
+                        <Image url="@../icons/batimento-cardiaco.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="72.0" prefHeight="27.0" prefWidth="231.0" text="Gerenciamento de Consulta" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="123.0" AnchorPane.topAnchor="38.0">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="18.0" />
+                     </font>
+                  </Label>
+                  <GridPane alignment="CENTER" hgap="10.0" layoutX="35.0" layoutY="211.0" prefHeight="90.0" prefWidth="416.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="90.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="208.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="208.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Paciente" />
+                        <Label text="Médico" GridPane.columnIndex="1" />
+                        <Label text="Funcionário:" GridPane.rowIndex="2" />
+                        <Label text="Data" GridPane.rowIndex="4" />
+                        <Label text="Hora" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Duração:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Status" GridPane.rowIndex="6" />
+                        <Label fx:id="labelConsultaPacienteNome" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaMedicoNome" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaFuncionarioNome" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaDuracao" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaData" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaHora" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelConsultaStatus" prefHeight="30.0" prefWidth="1000.0" styleClass="labelInformacoes" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Group layoutX="34.0" layoutY="487.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="303.0">
+                     <children>
+                        <JFXButton fx:id="buttonPacienteAlterar" layoutX="83.0" onAction="#handleButtonAlterar" prefHeight="29.0" prefWidth="75.0" styleClass="JFXButtonAlterar" text="Alterar" />
+                        <JFXButton fx:id="buttonPacienteInserir" onAction="#handleButtonInserir" prefHeight="29.0" prefWidth="75.0" styleClass="JFXButtonInserir" text="Inserir" />
+                        <JFXButton fx:id="buttonPacienteRemover" layoutX="165.0" onAction="#handleButtonRemover" prefHeight="29.0" prefWidth="75.0" styleClass="JFXButtonRemover" text="Remover" />
+                     </children>
+                  </Group>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
