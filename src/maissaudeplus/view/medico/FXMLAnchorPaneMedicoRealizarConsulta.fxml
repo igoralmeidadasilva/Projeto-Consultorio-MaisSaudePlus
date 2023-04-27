@@ -45,7 +45,7 @@
                         <Font name="Yu Gothic UI Semibold" size="15.0" />
                      </font>
                   </Label>
-                  <SearchableComboBox fx:id="comboBoxSelecionarConsulta" onAction="#handleSelecionarConsulta" GridPane.rowIndex="1" />
+                  <SearchableComboBox fx:id="comboBoxSelecionarConsulta" GridPane.rowIndex="1" />
                   <SearchableComboBox fx:id="comboBoxSelecionarProcedimento" prefHeight="38.0" prefWidth="356.0" GridPane.rowIndex="3" />
                   <SearchableComboBox fx:id="comboBoxSelecionarMedicamento" GridPane.rowIndex="5" />
                </children>

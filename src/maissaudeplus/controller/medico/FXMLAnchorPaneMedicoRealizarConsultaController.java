@@ -40,8 +40,9 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController {
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
 
     
-    public void initialize(URL url, ResourceBundle rb) {      
-        loadComboBoxConsulta();
+    public void initialize(URL url, ResourceBundle rb) {    
+        // TODO  
+        //loadComboBoxConsulta();
         // loadComboBoxProcedimento();
         // loadComboBoxMedicamento();
     }  

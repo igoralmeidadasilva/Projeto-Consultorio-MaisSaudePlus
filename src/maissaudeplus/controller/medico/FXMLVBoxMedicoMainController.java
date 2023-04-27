@@ -28,8 +28,9 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     @FXML
     private JFXButton buttonClose;
 
-
+    @FXML
     private AnchorPane anchorPaneBase;
+
     private AnchorPane anchorPaneRealizarConsulta;
 
     @Override
@@ -59,10 +60,11 @@ public class FXMLVBoxMedicoMainController implements Initializable {
             anchorPaneRealizarConsulta = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/medico/FXMLAnchorPaneMedicoRealizarConsulta.fxml"));
         }
 
-        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 0.0);
-        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,0.0 );
-        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 0.0);
-        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 0.0);
+
+        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 200.0);
+        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,200.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 200.0);
+        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 200.0);
         
         anchorPaneBase.getChildren().setAll(anchorPaneRealizarConsulta);
         
