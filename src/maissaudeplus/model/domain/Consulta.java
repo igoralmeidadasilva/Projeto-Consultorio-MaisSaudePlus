@@ -108,11 +108,6 @@ public class Consulta {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-
-    @Override
-    public String toString() {
-        return "{" + "codConsulta=" + codConsulta + ", dataConsulta=" + dataConsulta + ", horaConsulta=" + horaConsulta + ", duracaoConsulta=" + duracaoConsulta + ", statusConsulta=" + statusConsulta + ", medico=" + medico + ", paciente=" + paciente + ", funcionario=" + funcionario + '}';
-    }
    
    
 }
