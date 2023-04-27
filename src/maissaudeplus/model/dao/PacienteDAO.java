@@ -39,6 +39,7 @@ public class PacienteDAO {
                 paciente.setSexo(resultado.getString("sexo").charAt(0));
                 paciente.setEmail(resultado.getString("email"));
                 paciente.setTelefone(resultado.getString("telefone"));
+                paciente.setNumConsultas(resultado.getInt("numConsultas"));
                 retorno.add(paciente);
             }
         } catch(SQLException e){
@@ -122,5 +123,49 @@ public class PacienteDAO {
             Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return retorno;
+    }
+        public int getNumConsultas (Paciente paciente){
+        String sql = "SELECT numconsultas FROM paciente WHERE codPaciente = ?;";
+        int retorno = 0;
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, paciente.getCodPaciente());
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()){
+                retorno = resultado.getInt("numconsultas");
+            }
+        } catch (SQLException e){
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
+    
+    public boolean addNumConsultas(Paciente paciente){
+        String sql = "UPDATE Paciente SET numConsultas = ? WHERE codPaciente = ?";
+        int numConsultas = 1 + getNumConsultas(paciente);
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, numConsultas);
+            stmt.setInt(2, paciente.getCodPaciente());
+            stmt.execute();
+            return true;
+        }catch (SQLException e){
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+        public boolean removeNumConsultas(Paciente paciente){
+        String sql = "UPDATE Paciente SET numConsultas = ? WHERE codPaciente = ?";
+        int numConsultas = 1 - getNumConsultas(paciente);
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, numConsultas);
+            stmt.setInt(2, paciente.getCodPaciente());
+            stmt.execute();
+            return true;
+        }catch (SQLException e){
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
     }
 }

@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import maissaudeplus.model.dao.ConsultaDAO;
+import maissaudeplus.model.dao.PacienteDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Consulta;
@@ -80,6 +81,7 @@ public class FXMLAnchorPaneFuncionarioVisualizarConsultaController implements In
     
     //Lista de DAOs usados neste controller
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
+    private final PacienteDAO pacienteDAO = new PacienteDAO();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -182,6 +184,8 @@ public class FXMLAnchorPaneFuncionarioVisualizarConsultaController implements In
                 //Efetuando a alteração
                 consultaDAO.remover(consulta);
                 //Recarregando a table view com os dados da consulta atualizados
+                pacienteDAO.setConnection(connection);
+                pacienteDAO.removeNumConsultas(consulta.getPaciente());
                 loadTableView();
                 //Criação de um alerta de confirmação
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

@@ -18,7 +18,7 @@ public class FXMLAnchorPaneFuncionarioRemoverConsultaDialogController implements
 
     @FXML
     private JFXButton buttonCancelar;
-    
+
     //Atributos para a manipulação do Stage
     private Stage dialogStage;
     private boolean buttonConfirmarClicked = false;
@@ -55,5 +55,5 @@ public class FXMLAnchorPaneFuncionarioRemoverConsultaDialogController implements
 
     public boolean isButtonConfirmarClicked() {
         return buttonConfirmarClicked;
-    }        
+    }  
 }

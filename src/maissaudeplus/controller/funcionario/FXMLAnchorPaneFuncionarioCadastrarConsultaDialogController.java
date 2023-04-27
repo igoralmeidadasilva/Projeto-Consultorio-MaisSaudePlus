@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,7 +33,7 @@ import org.controlsfx.control.SearchableComboBox;
 
 /**
  * FXML Controller class
- * Classe de controle que é responsável pelos processos relacionados a Agendar Consulta
+ * Dialog que é responsável pelos processos relacionados a Agendar Consulta
  */
 public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implements Initializable {
 
@@ -55,6 +57,9 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
 
     @FXML
     private Label labelPacienteNome;
+    
+    @FXML
+    private Label labelPacienteNumConsultas;
 
     @FXML
     private Label labelPromptStatus;
@@ -89,13 +94,10 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     @FXML
     private SearchableComboBox<String> comboBoxConsultaStatus;
     
-<<<<<<< HEAD
     //Lista de horarios disponiveis
     List<LocalTime> listHorarios = new ArrayList();
     List<LocalTime> listHorariosFiltrado;
     
-=======
->>>>>>> 46e61f2c490cb2a3e8df67d2efbc86eef21bdf55
     //ObservableList para preencher a tableview
     private ObservableList<Paciente> listaPacientes;
     
@@ -115,14 +117,18 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     private Consulta consulta;
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {      
-        loadTableView();
-        listenerTableView();
+    public void initialize(URL url, ResourceBundle rb) {  
+        //Carregando informações nos componentes visuais
+        loadTableView();    
         loadComboBoxStatus();
         loadComboBoxMedico();
         loadComboBoxFuncionario();
         loadComboBoxDuracao();
-        loadComboBoxHora();
+        loadHorario();
+        loadComboBoxHora(); 
+        
+        //Listener do TableView
+        listenerTableView();
     }  
     
     private void loadTableView(){
@@ -140,8 +146,10 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     
     private void selecionarItemsTableViewPacientes(Paciente paciente){
         if(paciente != null){
+            pacienteDAO.setConnection(connection);
             labelPacienteCodigo.setText(String.valueOf(paciente.getCodPaciente()));
             labelPacienteNome.setText(paciente.getNome());
+            labelPacienteNumConsultas.setText(String.valueOf(paciente.getNumConsultas())); 
         } else {
             labelPacienteCodigo.setText("");
             labelPacienteCodigo.setText("");
@@ -166,19 +174,17 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     }
     
     private void loadComboBoxDuracao(){
-        ObservableList<Integer> lista = FXCollections.observableArrayList(15, 30);
+        ObservableList<Integer> lista = FXCollections.observableArrayList(30, 45, 60);
         comboBoxConsultaDuracao.setItems(lista);
     }
     
     private void loadComboBoxHora(){
-<<<<<<< HEAD
         ObservableList<LocalTime> lista = FXCollections.observableArrayList(listHorarios);
-=======
-        ObservableList<LocalTime> lista = FXCollections.observableArrayList(loadHorario());
->>>>>>> 46e61f2c490cb2a3e8df67d2efbc86eef21bdf55
         comboBoxConsultaHora.setItems(lista);
     }
     
+    //Por motivos de padronização do projeto, foi preciso criar labels auxiliares para excrever os "Prompt text's" uma vez que a classe Searchable ComboBox não
+    //apresenta tal recurso, os métodos abaixo tem como objetivo replicar visualmente o efeito desta opção
     @FXML
     private void handleComboBoxStatus(){
         if(comboBoxConsultaStatus.getValue() != null){
@@ -186,8 +192,14 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
         }
     }
     
+    //Este método em especial ajuda no controle dos hórarios chamando o metodo "filtroHorario"
     @FXML
     private void handleComboBoxMedico(){
+        //Este if será executado caso o médico seja selecionado e uma data esteja selecionada
+        if((comboBoxConsultaMedico.getSelectionModel().getSelectedItem()) != null && (datePickerConsultaData.getValue() != null)){
+            filtroHorario();
+        }
+        
         if(comboBoxConsultaMedico.getSelectionModel().getSelectedItem() != null){
             labelPromptMedico.setText("");
         }
@@ -214,6 +226,15 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
         }
     }
     
+    //Este método em especial ajuda no controle dos hórarios chamando o metodo "filtroHorario"
+    @FXML
+    private void handleDatePicker(){
+        //Este if será executado caso a data seja selecionada e um médico esteja selecionado
+        if((comboBoxConsultaMedico.getSelectionModel().getSelectedItem()) != null && (datePickerConsultaData.getValue() != null)){
+            filtroHorario();
+        }
+    }
+    
     //Método de manipulação do botão "Confirmar"
     @FXML
     private void handleButtonConfirmar() {
@@ -224,12 +245,13 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
             consulta.setMedico(comboBoxConsultaMedico.getSelectionModel().getSelectedItem());
             consulta.setFuncionario(comboBoxConsultaFuncionario.getSelectionModel().getSelectedItem());
             consulta.setDataConsulta(datePickerConsultaData.getValue());
-            //consulta.setHoraConsulta(comboBoxConsultaHora.getValue());
-            consulta.setHoraConsulta(LocalTime.now());
+            consulta.setHoraConsulta(comboBoxConsultaHora.getValue());
             consulta.setDuracaoConsulta(comboBoxConsultaDuracao.getValue());
             consulta.setStatusConsulta(comboBoxConsultaStatus.getValue());
             //Retorna verdadeiro sinalizando que o botão "Confirmar" foi pressionado
             buttonConfirmarClicked = true;
+            //Invocando o método referente a atualizar o contador de consultas
+            atualizandoContadorConsultas();
             //Fechando o dialog
             dialogStage.close();
         }
@@ -263,21 +285,13 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
         this.consulta = consulta;
     }
 
-    private boolean validarEntradaDeDados(){
-        String errorMessage = "";  
-        return true;
-    }
-    
-    //Processo de négocio
-    private List<LocalTime> loadHorario(){
-        List<LocalTime> horarios = new ArrayList();
-        
+    // Primeiro Processo de négocio
+    private void loadHorario(){
+        //Este método cria uma sequência de objetos LocalTime para preencher o comboBox de horas 
         LocalTime abertura = LocalTime.of(8, 0);
         LocalTime fechamento = LocalTime.of(18, 0);
 
-        horarios.add(abertura);
         while(!abertura.equals(fechamento)){
-<<<<<<< HEAD
             abertura = abertura.plusMinutes(60);
             listHorarios.add(abertura);
         }
@@ -376,11 +390,5 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
             //Retorno falso sinalizando que os campos estão errados
             return false;
         }    
-=======
-            abertura = abertura.plusMinutes(30);
-            horarios.add(abertura);
-        }
-        return horarios;
->>>>>>> 46e61f2c490cb2a3e8df67d2efbc86eef21bdf55
     }
 }
