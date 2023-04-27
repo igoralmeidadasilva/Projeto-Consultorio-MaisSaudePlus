@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS Medicamento;
 CREATE TABLE Medicamento (
   codMedicamento SERIAL NOT NULL,
   nomeMedicamento VARCHAR(50) NOT NULL,
-  descMedicamento VARCHAR(50)   NOT NULL,
+  descMedicamento VARCHAR(500)   NOT NULL,
   valorMedicamento FLOAT   NOT NULL,
  PRIMARY KEY(codMedicamento)
 );
@@ -46,7 +46,7 @@ PRIMARY KEY(codMedico)
 CREATE TABLE Procedimento (
   codProcedimento SERIAL  NOT NULL,
   nomeProcedimento VARCHAR(50),
-  descProcedimento VARCHAR(50)   NOT NULL,
+  descProcedimento VARCHAR(200)   NOT NULL,
   valorProcedimento FLOAT   NOT NULL,
   flagObesidade BOOL   NOT NULL,
 PRIMARY KEY(codProcedimento)
@@ -62,7 +62,6 @@ CREATE TABLE Paciente (
   sexo CHAR(1)   NOT NULL,
   email VARCHAR(50)   NOT NULL,
   telefone VARCHAR(14)   NOT NULL,
-  numConsultas int,
 PRIMARY KEY(codPaciente)
 );
 
@@ -136,23 +135,28 @@ TO user_saudeplus;
 INSERT INTO Medico (cpf, crmMedico, nomeMedico, dataAdmissao, email, telefone) 
 		VALUES	('11122233344', 'ES-36724', 'NORONHA RAMOS','2022-02-20', 'doutor.noronha@Gmail.com', '(28)99988-7766'),
 				    ('35641285425', 'ES-54862', 'LORENA RAMOS', '2022-02-20', 'doutora.lorena@gmail.com', '(28)99921-4586'),
-				    ('15674284684', 'RJ-48562', 'JÚLIO ARMANDO', '2022-03-04', 'doutor.julio@Gmail.com', '(28)99956-4158');
+				    ('15674284684', 'RJ-48562', 'JÚLIO ARMANDO', '2022-03-04', 'doutor.julio@Gmail,com', '(28)99956-4158');
 				
-INSERT INTO Paciente (cpf, nomePaciente, dataNascimento, altura, peso, sexo, email, telefone, numConsultas)
-		VALUES	('23541756364', 'JOEL ALMEIDA', '1981-09-26', 1.82, 91.00, 'M','Joel.456@hotmail.com', '(22)99948-7523', 1),
-				    ('65478932119', 'ELLIE WILLIAMS', '2003-09-30', 1.60, 60.00, 'F', 'EllieWilliams@gmail.com', '(28)99948-5261', 0),
-				    ('15248659124', 'RENATO SILVA', '1979-08-03', 1.81, 75.00, 'M', 'RenatoSilva@gmail.com', '(28)99921-5689', 0),
-				    ('85296374198', 'RENATA SILVA', '1979-08-03', 1.79, 70, 'F', 'RenataSilva@gmail.com', '(28)99948-7263', 0),
-				    ('47823685212', 'EVANDRO ARAUJO', '1985-09-01', 1.67, 95, 'M', 'EvandroFlamengo@hotmail.com', '(28)99945-8621', 0);
+INSERT INTO Paciente (cpf, nomePaciente, dataNascimento, altura, peso, sexo, email, telefone)
+		VALUES	('23541756364', 'JOEL ALMEIDA', '1981-09-26', 1.82, 91.00, 'M','Joel.456@hotmail.com', '(22)99948-7523'),
+				    ('65478932119', 'ELLIE WILLIAMS', '2003-09-30', 1.60, 60.00, 'F', 'EllieWilliams@gmail.com', '(28)99948-5261'),
+				    ('15248659124', 'RENATO SILVA', '1979-08-03', 1.81, 75.00, 'M', 'RenatoSilva@gmail.com', '(28)99921-5689'),
+				    ('85296374198', 'RENATA SILVA', '1979-08-03', 1.79, 70, 'F', 'RenataSilva@gmail.com', '(28)99948-7263'),
+				    ('47823685212', 'EVANDRO ARAUJO', '1985-09-01', 1.67, 95, 'M', 'EvandroFlamengo@hotmail.com', '(28)99945-8621');
 
 INSERT INTO Funcionario (nomefuncionario, dataadmissao, cpffuncionario, emailfuncionario, telefone)
-	  VALUES	('LUIZA MOREIRA', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845');
+	  VALUES	('Luiza Moreira', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845');
 
 INSERT INTO Consulta (medico_codmedico, funcionario_codfuncionario, paciente_codpaciente, dataconsulta, horaconsulta, duracaoconsulta, statusconsulta)
 	  VALUES	(1, 1, 1, '2023-05-28', '13:00', 60, 'Agendada');
 
-				
-				
-				
+INSERT INTO Procedimento(nomeProcedimento, descProcedimento, valorProcedimento, flagObesidade)	
+    VALUES('Hemograma','Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)', 10.00, true),
+          ('Cintilografia', 'Cintilografia para pesquisa de refluxo gastro-esofágico', 20.00, true),
+          ('Hemoglobina glicada', 'Hemoglobina glicada (A1 total), dosagem', 18.00, true) ;     
 
 
+INSERT INTO Medicamento(nomeMedicamento,descMedicamento,valorMedicamento)
+    VALUES('Dietilpropiona', 'Dietilpropiona atua no sistema nervoso central, estimulando os neurônios a liberarem ou manterem elevados os níveis das catecolaminas, um grupo de neurotransmissores do qual fazem parte a dopamina e a norepinefrina.', 150.00),
+          ('Sibutramina', 'Sibutramina atua no Sistema Nervoso Central (SNC) para inibir o apetite e aumentar a sensação de saciedade durante a alimentação', 50.00); 
+				
