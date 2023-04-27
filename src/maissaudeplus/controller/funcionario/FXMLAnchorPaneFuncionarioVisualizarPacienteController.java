@@ -168,6 +168,11 @@ public class FXMLAnchorPaneFuncionarioVisualizarPacienteController implements In
                 alert.setContentText("Paciente Alterado com sucesso!!");
                 alert.show();
             }
+        } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText("Selecione um Paciente para ser alterado!!");
+                alert.show();          
         }
     }
 
@@ -186,6 +191,11 @@ public class FXMLAnchorPaneFuncionarioVisualizarPacienteController implements In
                 //Recarregando a table view sem o paciente
                 loadTableView();
             }
+        } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText("Escolha um paciente para ser removido!!");
+                alert.show();
         }
     }
     

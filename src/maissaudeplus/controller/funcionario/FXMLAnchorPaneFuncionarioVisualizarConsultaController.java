@@ -148,13 +148,53 @@ public class FXMLAnchorPaneFuncionarioVisualizarConsultaController implements In
     }
     
     @FXML
-    void handleButtonAlterar() {
-
+    void handleButtonAlterar() throws IOException {
+        Consulta consulta = tableViewConsultas.getSelectionModel().getSelectedItem();
+        if(consulta != null){
+            if(loadAnchorPaneAlterarConsultaDialog(consulta)){
+                //Passando a conexão para a DAO
+                consultaDAO.setConnection(connection);
+                //Efetuando a alteração
+                consultaDAO.alterar(consulta);
+                //Recarregando a table view com os dados da consulta atualizados
+                loadTableView();
+                //Criação de um alerta de confirmação
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setContentText("Consulta Alterada com sucesso!!");
+                alert.show();
+            }
+        } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText("Escolha uma consulta para ser alterada!!");
+                alert.show();
+        }
     }
 
     @FXML
-    void handleButtonRemover() {
-
+    void handleButtonRemover() throws IOException {
+        Consulta consulta = tableViewConsultas.getSelectionModel().getSelectedItem();
+        if (consulta != null){
+            if(loadAnchorPaneRemoverConsultaDialog(consulta)){
+                //Passando a conexão para a DAO
+                consultaDAO.setConnection(connection);
+                //Efetuando a alteração
+                consultaDAO.remover(consulta);
+                //Recarregando a table view com os dados da consulta atualizados
+                loadTableView();
+                //Criação de um alerta de confirmação
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Sucesso");
+                alert.setContentText("Consulta Removida com sucesso!!");
+                alert.show();
+            }
+        }  else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText("Escolha uma consulta para ser removida!!");
+                alert.show();
+        }
     }
     
     //Método responsável pela abertura de uma nova janela dialog.fxml, retorna true caso o botão "Confirmar" seja clicado e false caso o botão "Cancelar" seja clicado
@@ -185,4 +225,60 @@ public class FXMLAnchorPaneFuncionarioVisualizarConsultaController implements In
         dialogStage.showAndWait();
         return controller.isButtonConfirmarClicked();
     }     
+    
+    //Método responsável pela abertura de uma nova janela dialog.fxml, retorna true caso o botão "Confirmar" seja clicado e false caso o botão "Cancelar" seja clicado
+    public boolean loadAnchorPaneAlterarConsultaDialog(Consulta consulta) throws IOException{
+        //Instancia de um FXMLLoader
+        FXMLLoader loader = new FXMLLoader();
+        //Passando a localização do .fxml para o FXMLLoader
+        loader.setLocation(FXMLAnchorPaneFuncionarioAlterarConsultaDialogController
+                .class.getResource("/maissaudeplus/view/funcionario/FXMLAnchorPaneFuncionarioAlterarConsultaDialog.fxml"));
+        //Criando um objeto anchor pane para receber o .fxml
+        AnchorPane page = (AnchorPane) loader.load();
+        //Criando um novo stage
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Alterar Consulta");
+        //Definindo que o novo stage não pode ser maximilizado
+        dialogStage.setResizable(false);
+        //Instancia de uma nova cena passando o anchor pane
+        Scene scene = new Scene(page);
+        //Passando a cena para o stage
+        dialogStage.setScene(scene);
+        //Carregando um Controller para o dialog
+        FXMLAnchorPaneFuncionarioAlterarConsultaDialogController controller = loader.getController();
+        //Passagem de parâmetro do stage atual para o controller poder manipulá-lo
+        controller.setDialogStage(dialogStage);
+        //Passagem de parametro de uma instancia do paciente para o controller poder adicionar os dados a ele.
+        controller.setConsulta(consulta);
+        //Mostrando a tela
+        dialogStage.showAndWait();
+        return controller.isButtonConfirmarClicked();
+    }
+    
+    //Método responsável pela abertura de uma nova janela dialog.fxml, retorna true caso o botão "Confirmar" seja clicado e false caso o botão "Cancelar" seja clicado
+    public boolean loadAnchorPaneRemoverConsultaDialog(Consulta consulta) throws IOException{
+        //Instancia de um FXMLLoader
+        FXMLLoader loader = new FXMLLoader();
+        //Passando a localização do .fxml para o FXMLLoader
+        loader.setLocation(FXMLAnchorPaneFuncionarioRemoverConsultaDialogController
+                .class.getResource("/maissaudeplus/view/funcionario/FXMLAnchorPaneFuncionarioRemoverConsultaDialog.fxml"));
+        //Criando um objeto anchor pane para receber o .fxml
+        AnchorPane page = (AnchorPane) loader.load();
+        //Criando um novo stage
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Remover Consulta");
+        //Definindo que o novo stage não pode ser maximilizado
+        dialogStage.setResizable(false);
+        //Instancia de uma nova cena passando o anchor pane
+        Scene scene = new Scene(page);
+        //Passando a cena para o stage
+        dialogStage.setScene(scene);
+        //Carregando um Controller para o dialog
+        FXMLAnchorPaneFuncionarioRemoverConsultaDialogController controller = loader.getController();
+        //Passagem de parâmetro do stage atual para o controller poder manipulá-lo
+        controller.setDialogStage(dialogStage);
+        //Mostrando a tela
+        dialogStage.showAndWait();
+        return controller.isButtonConfirmarClicked();
+    }
 }

@@ -95,8 +95,40 @@ public class ConsultaDAO {
         }
     }
     
-    //public boolean remover(Consulta consulta){}
-    //public boolean alterar(PConsulta consulta){}
+    public boolean remover(Consulta consulta){
+        String sql = "DELETE FROM consulta WHERE codconsulta = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, consulta.getCodConsulta());
+            stmt.execute();
+            return true;
+        } catch (SQLException e){
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+    
+    
+    public boolean alterar(Consulta consulta){
+        String sql = "UPDATE Consulta "
+            + " SET medico_codmedico=? , funcionario_codfuncionario=?, dataconsulta=?, horaconsulta=?, duracaoconsulta=?, statusconsulta=? "
+            + " WHERE codconsulta = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, consulta.getMedico().getCodMedico());
+            stmt.setInt(2, consulta.getFuncionario().getCodFuncionario());
+            stmt.setDate(3, consulta.getDataConsultaToDb());
+            stmt.setTime(4, consulta.getHoraConsultaToDb());
+            stmt.setInt(5, consulta.getDuracaoConsulta());
+            stmt.setString(6, consulta.getStatusConsulta());
+            stmt.setInt(7, consulta.getCodConsulta());
+            stmt.execute();
+            return true;
+        } catch (SQLException e){
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
      
     public List<Consulta> listarPorMedico(Medico m, LocalDate data){
         List<Consulta> retorno = new ArrayList();
