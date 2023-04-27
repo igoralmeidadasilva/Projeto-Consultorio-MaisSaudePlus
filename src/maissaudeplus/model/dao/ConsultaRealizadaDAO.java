@@ -1,10 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package maissaudeplus.model.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import maissaudeplus.model.domain.ConsultaRealizada;
+
 public class ConsultaRealizadaDAO {
+    private Connection connection;
     
+    public Connection getConnection(){
+        return connection;
+    }
+    
+    public void setConnection(Connection connection){
+        this.connection = connection;
+    }
+
+    public void inserir(ConsultaRealizada consultaRealizada){
+        String sql = "INSERT INTO consultarealizada(consulta_codconsulta, procedimento_codprocedimento, medicamento_codmedicamento)" + "VALUES (?, ?, ?)";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, consultaRealizada.getConsulta().getCodConsulta());
+            stmt.setInt(2, consultaRealizada.getProcedimento().getCodProcedimento());
+            stmt.setInt(3, consultaRealizada.getMedicamento().getCodMedicamento());
+            stmt.execute();
+        }catch(SQLException e){
+            Logger.getLogger(ConsultaRealizadaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

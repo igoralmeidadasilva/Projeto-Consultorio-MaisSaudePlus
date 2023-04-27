@@ -50,8 +50,7 @@ public class Medicamento {
 
     @Override
     public String toString() {
-        return "Medicamento [codMedicamento=" + codMedicamento + ", nomeMedicamento=" + nomeMedicamento
-                + ", descMedicamento=" + descMedicamento + ", valorMedicamento=" + valorMedicamento + "]";
-    }
+        return " " + nomeMedicamento;
+ }
 
 }

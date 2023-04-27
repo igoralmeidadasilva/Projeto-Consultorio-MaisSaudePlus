@@ -4,14 +4,15 @@ public class ConsultaRealizada {
     private int codConsultaRealizada;
     private Consulta consulta;
     private Procedimento procedimento;
-
+    private Medicamento medicamento;
     
     public ConsultaRealizada(){}
     
-    public ConsultaRealizada(int codConsultaRealizada, Consulta consulta, Procedimento procedimento) {
+    public ConsultaRealizada(int codConsultaRealizada, Consulta consulta, Procedimento procedimento, Medicamento medicamento) {
         this.codConsultaRealizada = codConsultaRealizada;
         this.consulta = consulta;
         this.procedimento = procedimento;
+        this.medicamento = medicamento;
     }
 
     public int getCodConsultaRealizada() {
@@ -36,6 +37,14 @@ public class ConsultaRealizada {
 
     public void setProcedimento(Procedimento procedimento) {
         this.procedimento = procedimento;
+    }
+
+    public Medicamento getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(Medicamento medicamento) {
+        this.medicamento = medicamento;
     }
 
     

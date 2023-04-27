@@ -29,7 +29,7 @@ public class ConsultaDAO {
     
     public List<Consulta> listar(){
         String sql = "SELECT * FROM Consulta";
-        List<Consulta> retorno = new ArrayList();
+        List<Consulta> retorno = new ArrayList<Consulta>();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         funcionarioDAO.setConnection(connection);
         MedicoDAO medicoDAO = new MedicoDAO();
@@ -75,8 +75,7 @@ public class ConsultaDAO {
         }    
         return retorno;
     }
-    
-    //public List<Consulta> listar(){}
+
     public void inserir(Consulta consulta){
         String sql = "INSERT INTO Consulta (medico_codmedico, funcionario_codfuncionario, paciente_codpaciente, dataconsulta, horaconsulta, duracaoconsulta, statusconsulta) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
