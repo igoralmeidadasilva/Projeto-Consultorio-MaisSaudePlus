@@ -14,6 +14,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import maissaudeplus.model.dao.ConsultaDAO;
 import maissaudeplus.model.dao.ConsultaRealizadaDAO;
 import maissaudeplus.model.dao.MedicamentoDAO;
@@ -55,7 +57,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     
     private void loadComboBoxConsulta() {
         consultaDAO.setConnection(connection);
-        ObservableList<Consulta> lista = FXCollections.observableArrayList(consultaDAO.listar());
+        ObservableList<Consulta> lista = FXCollections.observableArrayList(consultaDAO.listarConsultasAgendadas());
         comboBoxSelecionarConsulta.setItems(lista);
     }
 
@@ -71,14 +73,30 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         comboBoxSelecionarMedicamento.setItems(lista);
     }
 
-    // @FXML
-    // public void handleButtonConfirmar() throws IOException{
-    //     if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem() != null){
-    //         ConsultaRealizada consultaRealizada = new ConsultaRealizada();
-    //         consultaRealizada.setConsulta(comboBoxSelecionarConsulta.getValue());
-    //         consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getValue());
-    //         consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getValue());
-    //         consultaRealizadaDAO.inserir(consultaRealizada);
-    //     }
-    // }
+    @FXML
+    public void handleButtonConfirmar() throws IOException{
+        consultaRealizadaDAO.setConnection(connection);
+
+        if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem() != null){
+            ConsultaRealizada consultaRealizada = new ConsultaRealizada();
+            consultaRealizada.setConsulta(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem());
+            consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem());
+            consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem());
+
+            if(consultaRealizadaDAO.buscarConsultaRealizada(consultaRealizada)){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setContentText("Consulta já foi registrada!");
+                alert.show();
+            } else {
+                consultaRealizadaDAO.inserir(consultaRealizada);
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setContentText("Consulta realizada com sucesso!");
+                alert.show();
+            } 
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Consulta não foi registrada devido ao não preenchimento dos campos!");
+            alert.show();
+        }
+    }
 }
