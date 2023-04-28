@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="..\style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneMedicoRealizarConsultaController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="600.0" styleClass="..\style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneMedicoRealizarConsultaController">
    <children>
       <Pane prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane id="AnchorPane" layoutX="14.0" layoutY="103.0" prefHeight="300.0" prefWidth="323.0" stylesheets="@../style.css">
@@ -30,6 +30,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label text="Código da Consulta:">
@@ -37,19 +39,25 @@
                         <Font name="Yu Gothic UI Semibold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="Procedimento:" GridPane.rowIndex="2">
+                  <Label text="Procedimento:" GridPane.rowIndex="4">
                      <font>
                         <Font name="Yu Gothic UI Semibold" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="Medicamento:" GridPane.rowIndex="4">
+                  <Label text="Medicamento:" GridPane.rowIndex="6">
                      <font>
                         <Font name="Yu Gothic UI Semibold" size="15.0" />
                      </font>
                   </Label>
-                  <SearchableComboBox fx:id="comboBoxSelecionarProcedimento" prefHeight="38.0" prefWidth="356.0" GridPane.rowIndex="3" />
-                  <SearchableComboBox fx:id="comboBoxSelecionarMedicamento" GridPane.rowIndex="5" />
+                  <SearchableComboBox fx:id="comboBoxSelecionarProcedimento" prefHeight="38.0" prefWidth="356.0" GridPane.rowIndex="5" />
+                  <SearchableComboBox fx:id="comboBoxSelecionarMedicamento" GridPane.rowIndex="7" />
                   <SearchableComboBox fx:id="comboBoxSelecionarConsulta" prefHeight="31.0" prefWidth="461.0" GridPane.rowIndex="1" />
+                  <Label text="Nome do Paciente:" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelPacienteNome" GridPane.rowIndex="3" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />

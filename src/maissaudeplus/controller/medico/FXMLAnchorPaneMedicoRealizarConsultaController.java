@@ -16,15 +16,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import maissaudeplus.model.dao.ConsultaDAO;
 import maissaudeplus.model.dao.ConsultaRealizadaDAO;
 import maissaudeplus.model.dao.MedicamentoDAO;
+import maissaudeplus.model.dao.PacienteDAO;
 import maissaudeplus.model.dao.ProcedimentoDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Consulta;
 import maissaudeplus.model.domain.ConsultaRealizada;
 import maissaudeplus.model.domain.Medicamento;
+import maissaudeplus.model.domain.Paciente;
 import maissaudeplus.model.domain.Procedimento;
 
 public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializable{
@@ -32,6 +35,8 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     @FXML
     private SearchableComboBox<Consulta> comboBoxSelecionarConsulta;
 
+    @FXML
+    private Label labelPacienteNome;
     @FXML
     private SearchableComboBox<Procedimento> comboBoxSelecionarProcedimento;
 
@@ -48,6 +53,9 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
     private final ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
     private final MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
+    private final PacienteDAO pacienteDAO = new PacienteDAO();
+
+    private final ConsultaRealizada consultaRealizada = new ConsultaRealizada();
 
     public void initialize(URL url, ResourceBundle rb) {    
         loadComboBoxConsulta();
@@ -78,7 +86,6 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         consultaRealizadaDAO.setConnection(connection);
 
         if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem() != null && comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem() != null){
-            ConsultaRealizada consultaRealizada = new ConsultaRealizada();
             consultaRealizada.setConsulta(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem());
             consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem());
             consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem());
