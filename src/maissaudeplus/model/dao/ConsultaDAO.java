@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import maissaudeplus.model.domain.Consulta;
@@ -105,8 +107,7 @@ public class ConsultaDAO {
             Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
-    }
-    
+    } 
     
     public boolean alterar(Consulta consulta){
         String sql = "UPDATE Consulta "
@@ -177,6 +178,21 @@ public class ConsultaDAO {
         } catch (SQLException e){
             Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
         } 
+        return retorno;
+    }
+    
+    public Map<Integer, Integer> listarQuantidadeConsultasPorMes(){
+        String sql = "SELECT COUNT(codconsulta) AS qtde, EXTRACT (MONTH FROM dataconsulta) AS mes FROM consulta GROUP BY mes";
+        Map<Integer, Integer> retorno = new HashMap();
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()){
+                retorno.put(resultado.getInt("qtde"), resultado.getInt("mes"));
+            }
+        } catch(SQLException e) {
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
         return retorno;
     }
 }
