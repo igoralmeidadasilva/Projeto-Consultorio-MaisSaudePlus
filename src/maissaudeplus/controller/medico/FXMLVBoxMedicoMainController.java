@@ -65,10 +65,10 @@ public class FXMLVBoxMedicoMainController implements Initializable {
         }
 
 
-        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 200.0);
-        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,200.0 );
-        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 200.0);
-        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 200.0);
+        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 0.0);
         
         anchorPaneBase.getChildren().setAll(anchorPaneRealizarConsulta);
         

@@ -47,5 +47,11 @@ public class ConsultaRealizada {
         this.medicamento = medicamento;
     }
 
+    @Override
+    public String toString() {
+        return "ConsultaRealizada:" + codConsultaRealizada + ", consulta:" + consulta
+                + ", procedimento:" + procedimento + ", medicamento:" + medicamento;
+    }
+
     
 }
