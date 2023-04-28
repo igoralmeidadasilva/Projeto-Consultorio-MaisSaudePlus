@@ -230,14 +230,16 @@ public class ConsultaDAO {
         return retorno;
     }
     
-    public Map<Integer, Integer> listarQuantidadeConsultasPorMes(){
-        String sql = "SELECT COUNT(codconsulta) AS qtde, EXTRACT (MONTH FROM dataconsulta) AS mes FROM consulta GROUP BY mes";
+    public Map<Integer, Integer> listarQuantidadeConsultasPorMes(int ano){
+        String sql = "SELECT COUNT(codconsulta) AS qtde, EXTRACT (MONTH FROM dataconsulta) AS mes FROM consulta "
+                + "WHERE EXTRACT (YEAR FROM dataconsulta)=? GROUP BY mes ORDER BY mes;";
         Map<Integer, Integer> retorno = new HashMap();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, ano); 
             ResultSet resultado = stmt.executeQuery();
             while(resultado.next()){
-                retorno.put(resultado.getInt("qtde"), resultado.getInt("mes"));
+                retorno.put(resultado.getInt("mes"), resultado.getInt("qtde"));
             }
         } catch(SQLException e) {
             Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);

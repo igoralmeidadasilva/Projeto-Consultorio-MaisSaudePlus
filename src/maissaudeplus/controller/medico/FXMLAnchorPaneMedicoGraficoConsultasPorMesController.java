@@ -3,6 +3,7 @@ package maissaudeplus.controller.medico;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -54,14 +55,13 @@ public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Ini
         String[] arrayMeses = {"Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"};
         ObservableList<String> observableListMeses = FXCollections.observableArrayList(Arrays.asList(arrayMeses));
         categoryAxis.setCategories(observableListMeses);
-        
         consultaDAO.setConnection(connection);
-        Map<Integer, Integer> dados = consultaDAO.listarQuantidadeConsultasPorMes();
+        Map<Integer, Integer> dados = consultaDAO.listarQuantidadeConsultasPorMes(LocalDate.now().getYear());
+        System.out.println("Dados: \n" + dados);
         XYChart.Series<String, Integer> serie = new XYChart.Series();
         for(Integer chave : dados.keySet()){
             Integer valor = dados.get(chave);
-            String mes = retornaNomeMes(chave);
-            
+            String mes = retornaNomeMes(chave);           
             XYChart.Data<String, Integer> dado = new XYChart.Data<>(mes, valor);
             serie.getData().add(dado);
         }
