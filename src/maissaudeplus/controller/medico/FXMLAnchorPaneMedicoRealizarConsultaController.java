@@ -117,4 +117,4 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             alert.show();     
         }
     }
-}
+}         
