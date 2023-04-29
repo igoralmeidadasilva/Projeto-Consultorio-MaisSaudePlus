@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,9 +49,40 @@ public class ProcedimentoDAO {
                 retorno.add(procedimento); 
             }
         } catch (SQLException e){
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
         }    
         return retorno;
     }
     
+    public Map<Procedimento, Integer> relatorioQtde(){
+        String sql = "SELECT 	p.codprocedimento AS codigo, " +
+		"p.nomeprocedimento AS nome, " +
+		"p.valorprocedimento AS valor, " +
+		"p.descprocedimento AS descricao," +
+		"p.flagobesidade AS flag, " +
+		"COUNT(cr.procedimento_codprocedimento) AS quantidade " +
+		"FROM	consultaRealizada cr, " +
+		"procedimento p " +
+		"WHERE cr.procedimento_codprocedimento = p.codprocedimento " +
+		"GROUP BY p.codprocedimento, p.nomeprocedimento " +
+		"ORDER BY p.codprocedimento";
+        Map<Procedimento, Integer> retorno = new HashMap();  
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()){
+                Procedimento procedimento = new Procedimento();
+                procedimento.setCodProcedimento(resultado.getInt("codigo"));
+                procedimento.setNomeProcedimento(resultado.getString("nome"));
+                procedimento.setValorProcedimento(resultado.getDouble("valor"));
+                procedimento.setDescProcedimento(resultado.getString("descricao"));
+                procedimento.setFlagObesidade(resultado.getBoolean("flag"));
+                int quantidade = resultado.getInt("quantidade");
+                retorno.put(procedimento, quantidade);
+            }
+        } catch (SQLException e){
+            Logger.getLogger(ProcedimentoDAO.class.getName()).log(Level.SEVERE, null, e);
+        }  
+        return retorno;
+    }   
 }

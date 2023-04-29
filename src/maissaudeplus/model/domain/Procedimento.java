@@ -71,6 +71,5 @@ public class Procedimento {
     public String toString() {
         return " " + nomeProcedimento;
     }
-    
-    
+   
 }

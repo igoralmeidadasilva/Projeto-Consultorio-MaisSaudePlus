@@ -27,6 +27,9 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     
     @FXML
     private JFXButton buttonConsultaPorMes;
+      
+    @FXML
+    private JFXButton buttonRelatorioProcedimento;
 
     @FXML
     private JFXButton buttonClose;
@@ -36,6 +39,7 @@ public class FXMLVBoxMedicoMainController implements Initializable {
 
     private AnchorPane anchorPaneRealizarConsulta;
     private AnchorPane anchorPaneGraficoPorMes;
+    private AnchorPane anchorPaneRelatorioProcedimento;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,4 +90,15 @@ public class FXMLVBoxMedicoMainController implements Initializable {
         anchorPaneBase.getChildren().setAll(anchorPaneGraficoPorMes);
     }
     
+    @FXML
+    void handleButtonRelatorioProcedimento() throws IOException {
+        if(anchorPaneRelatorioProcedimento == null){
+            anchorPaneRelatorioProcedimento = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/relatorios/FXMLAnchorPaneRelatorioProcedimento.fxml"));
+        }
+        AnchorPane.setTopAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneRelatorioProcedimento,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        anchorPaneBase.getChildren().setAll(anchorPaneRelatorioProcedimento);
+    }    
 }
