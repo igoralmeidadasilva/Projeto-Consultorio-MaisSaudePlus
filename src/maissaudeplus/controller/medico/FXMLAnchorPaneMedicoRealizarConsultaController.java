@@ -36,7 +36,8 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     private SearchableComboBox<Consulta> comboBoxSelecionarConsulta;
 
     @FXML
-    private Label labelPacienteNome;
+    private SearchableComboBox<Paciente> comboBoxSelecionarPaciente;
+
     @FXML
     private SearchableComboBox<Procedimento> comboBoxSelecionarProcedimento;
 
@@ -53,20 +54,30 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     private final ConsultaDAO consultaDAO = new ConsultaDAO();
     private final ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
     private final MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
-    private final PacienteDAO pacienteDAO = new PacienteDAO();
 
     private final ConsultaRealizada consultaRealizada = new ConsultaRealizada();
 
     public void initialize(URL url, ResourceBundle rb) {    
         loadComboBoxConsulta();
+        //loadComboBoxPaciente();
         loadComboBoxProcedimento();
         loadComboBoxMedicamento();
     }  
-    
+
     private void loadComboBoxConsulta() {
         consultaDAO.setConnection(connection);
         ObservableList<Consulta> lista = FXCollections.observableArrayList(consultaDAO.listarConsultasAgendadas());
         comboBoxSelecionarConsulta.setItems(lista);
+    }
+
+    @FXML
+    private void loadComboBoxPaciente() {
+        if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null){
+            Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
+            consultaDAO.setConnection(connection);
+            ObservableList<Paciente> lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
+            comboBoxSelecionarPaciente.setItems(lista);
+        }
     }
 
     private void loadComboBoxProcedimento() {
