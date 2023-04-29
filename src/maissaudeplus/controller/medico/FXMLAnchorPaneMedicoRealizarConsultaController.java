@@ -114,7 +114,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setContentText("Consulta não foi registrada devido ao não preenchimento dos campos!");
-            alert.show();
+            alert.show();     
         }
     }
 }
