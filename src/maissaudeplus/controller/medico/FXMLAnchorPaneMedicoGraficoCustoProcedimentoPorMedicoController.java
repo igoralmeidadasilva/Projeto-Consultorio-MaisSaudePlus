@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -22,6 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import org.apache.poi.hssf.util.HSSFColor.PINK;
 
 public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController implements Initializable{
 
@@ -43,8 +46,6 @@ public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController imp
     private final MedicoDAO medicoDAO = new MedicoDAO();
     private final ConsultaRealizadaDAO consultaRealizadaDAO = new ConsultaRealizadaDAO();
 
-    private final ConsultaRealizada consultaRealizada = new ConsultaRealizada();
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carregarGrafico();
@@ -60,12 +61,12 @@ public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController imp
         Map<String,Double> dataset = consultaRealizadaDAO.gastoPorProcedimentoSolicitado();
         XYChart.Series<String, Double> serie = new XYChart.Series();
         for(String nome : dataset.keySet()){
-                    Double total = dataset.get(nome);          
-                    XYChart.Data<String, Double> dado = new XYChart.Data<>(nome, total);
-                    serie.getData().add(dado);
-                }
-                barChart.setTitle("Custo Procedimentos x Médico");
-                barChart.getData().add(serie);
+            Double total = dataset.get(nome);          
+            XYChart.Data<String, Double> dado = new XYChart.Data<>(nome, total);
+            serie.getData().add(dado);
+        }
+        barChart.setTitle("Custo Procedimentos x Médico (em R$)");
+        barChart.getData().add(serie);
     }
 
 }
