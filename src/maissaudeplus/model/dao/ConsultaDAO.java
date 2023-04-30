@@ -81,7 +81,7 @@ public class ConsultaDAO {
     }
 
     public List<Consulta> listarConsultasAgendadas() {
-        String sql = "SELECT * FROM Consulta WHERE statusconsulta = 'Agendada' ";
+        String sql = "SELECT * FROM Consulta WHERE statusconsulta = 'Agendada' ORDER BY codconsulta ASC ";
         List<Consulta> retorno = new ArrayList<Consulta>();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         funcionarioDAO.setConnection(connection);
