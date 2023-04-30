@@ -27,6 +27,7 @@ import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Consulta;
 import maissaudeplus.model.domain.ConsultaRealizada;
 import maissaudeplus.model.domain.Medicamento;
+import maissaudeplus.model.domain.Medico;
 import maissaudeplus.model.domain.Paciente;
 import maissaudeplus.model.domain.Procedimento;
 
@@ -47,6 +48,9 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     @FXML
     private JFXButton buttonConfirmar;
 
+    @FXML
+    private Label labelTotalConsultasRealizadas;
+
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
 
@@ -57,9 +61,10 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     private final ConsultaRealizada consultaRealizada = new ConsultaRealizada();
 
-    public void initialize(URL url, ResourceBundle rb) {    
+    int TotalConsultasRealizadas = 0;
+
+    public void initialize(URL url, ResourceBundle rb) { 
         loadComboBoxConsulta();
-        //loadComboBoxPaciente();
         loadComboBoxProcedimento();
         loadComboBoxMedicamento();
     }  
@@ -68,11 +73,14 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         consultaDAO.setConnection(connection);
         ObservableList<Consulta> lista = FXCollections.observableArrayList(consultaDAO.listarConsultasAgendadas());
         comboBoxSelecionarConsulta.setItems(lista);
+        
     }
 
     @FXML
     private void loadComboBoxPaciente() {
         if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null){
+            mostrarTotalConsultasPorMedico();
+            System.out.println();
             Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
             consultaDAO.setConnection(connection);
             ObservableList<Paciente> lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
@@ -90,6 +98,13 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         medicamentoDAO.setConnection(connection);
         ObservableList<Medicamento> lista = FXCollections.observableArrayList(medicamentoDAO.listar());
         comboBoxSelecionarMedicamento.setItems(lista);
+    }
+
+    private void mostrarTotalConsultasPorMedico(){
+            Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
+            consultaDAO.setConnection(connection);
+            TotalConsultasRealizadas = consultaDAO.listarQuantidadeConsultasPorDia(consultaSelecionada.getMedico().getCodMedico());
+            labelTotalConsultasRealizadas.setText(Integer.toString(TotalConsultasRealizadas));
     }
 
     @FXML

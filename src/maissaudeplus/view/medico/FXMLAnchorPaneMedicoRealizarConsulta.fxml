@@ -112,5 +112,11 @@
          </font>
       </Label>
       <JFXButton fx:id="buttonConfirmar" layoutX="364.0" layoutY="528.0" onAction="#handleButtonConfirmar" styleClass="JFXButtonConfirmar" text="Confirmar" AnchorPane.bottomAnchor="41.0" />
+      <Label layoutX="313.0" layoutY="99.0" text="Num. Consulta:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTotalConsultasRealizadas" layoutX="416.0" layoutY="99.0" />
    </children>
 </AnchorPane>

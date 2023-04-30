@@ -1,5 +1,6 @@
 package maissaudeplus.model.dao;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -261,6 +262,24 @@ public class ConsultaDAO {
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
                 retorno.put(resultado.getInt("mes"), resultado.getInt("qtde"));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
+
+    public int listarQuantidadeConsultasPorDia(int medicoSelecionado){
+        String sql = "SELECT CAST(COUNT(cr.consulta_codconsulta) AS INTEGER) AS total FROM consultarealizada cr, consulta co, medico me WHERE cr.consulta_codconsulta = co.codconsulta AND co.medico_codmedico = ? GROUP BY me.nomemedico";
+        int retorno = 0;
+        MedicoDAO medicoDAO = new MedicoDAO();
+        medicoDAO.setConnection(connection);
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, medicoSelecionado);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                retorno = resultado.getInt("total");
             }
         } catch (SQLException e) {
             Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
