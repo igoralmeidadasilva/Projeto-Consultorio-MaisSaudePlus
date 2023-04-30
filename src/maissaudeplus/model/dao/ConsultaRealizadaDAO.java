@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import maissaudeplus.model.domain.ConsultaRealizada;
@@ -50,5 +52,21 @@ public class ConsultaRealizadaDAO {
             Logger.getLogger(ConsultaRealizadaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-    }  
+    }
+    
+    public Map<String,Double> gastoPorProcedimentoSolicitado(){
+        String sql = "SELECT me.nomemedico, SUM(pr.valorprocedimento) AS total FROM procedimento pr, consultarealizada cr, consulta co, medico me WHERE cr.consulta_codconsulta = co.codconsulta AND co.medico_codmedico = me.codmedico GROUP BY me.nomemedico";
+        Map<String,Double> retorno = new HashMap();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                retorno.put(resultado.getString("nomemedico"), resultado.getDouble("total"));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    
+    }
 }

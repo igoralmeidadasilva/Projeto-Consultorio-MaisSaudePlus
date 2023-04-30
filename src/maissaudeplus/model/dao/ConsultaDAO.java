@@ -98,30 +98,24 @@ public class ConsultaDAO {
                 Medico medico = new Medico();
                 Funcionario funcionario = new Funcionario();
 
-                // Obtendo os atributos "básicos"
                 consulta.setCodConsulta(resultado.getInt("codconsulta"));
                 consulta.setDataConsulta(resultado.getDate("dataconsulta"));
                 consulta.setHoraConsulta(resultado.getTime("horaconsulta"));
                 consulta.setDuracaoConsulta(resultado.getInt("duracaoconsulta"));
                 consulta.setStatusConsulta(resultado.getString("statusconsulta"));
 
-                // Obtendo os códigos do médico, funcionário e paciente
                 medico.setCodMedico(resultado.getInt("medico_codmedico"));
                 funcionario.setCodFuncionario(resultado.getInt("funcionario_codfuncionario"));
                 paciente.setCodPaciente(resultado.getInt("paciente_codpaciente"));
 
-                // Fazendo a conexão com outros DAOs para buscar os objetos medico, funcionario
-                // e paciente
                 medico = medicoDAO.buscar(medico);
                 funcionario = funcionarioDAO.buscar(funcionario);
                 paciente = pacienteDAO.buscar(paciente);
 
-                // Terminando de preencher a Consulta
                 consulta.setMedico(medico);
                 consulta.setPaciente(paciente);
                 consulta.setFuncionario(funcionario);
 
-                // Adicionando a Lista de retorno
                 retorno.add(consulta);
             }
         } catch (SQLException e) {
