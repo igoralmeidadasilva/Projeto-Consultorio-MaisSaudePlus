@@ -109,6 +109,20 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             labelTotalConsultasRealizadas.setText(Integer.toString(TotalConsultasRealizadas));
     }
 
+    private void pacienteEstaPresente(){
+        ConsultaDAO consultaDAO = new ConsultaDAO();
+        consultaDAO.setConnection(connection);
+        boolean selecionado = checkBoxPaciente.isSelected();
+        String status = "";
+        int consulta = consultaRealizada.getConsulta().getCodConsulta();
+        if(selecionado){
+            status = "Realizada";
+        } else {
+            status = "Não compareceu";    
+        }
+        consultaDAO.alterarStatusConsulta(status,consulta);
+    }
+
     @FXML
     public void handleButtonConfirmar() throws IOException{
         consultaRealizadaDAO.setConnection(connection);
@@ -117,16 +131,8 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             consultaRealizada.setConsulta(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem());
             consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem());
             consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem());
-
-            boolean selecionado = checkBoxPaciente.isSelected();
-            if(selecionado){
-                ConsultaDAO consultaDAO = new ConsultaDAO();
-                consultaDAO.setConnection(connection);
-                int consulta = consultaRealizada.getConsulta().getCodConsulta();
-                String status = "Realizada";
-                consultaDAO.alterarStatusConsulta(status,consulta);
-            }
-
+            pacienteEstaPresente();
+        
             if(consultaRealizadaDAO.buscarConsultaRealizada(consultaRealizada)){
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText("Consulta já foi registrada!");
