@@ -49,9 +49,11 @@ public class ConsultaRealizada {
 
     @Override
     public String toString() {
-        return "ConsultaRealizada:" + codConsultaRealizada + ", consulta:" + consulta
-                + ", procedimento:" + procedimento + ", medicamento:" + medicamento;
+        return "ConsultaRealizada [codConsultaRealizada=" + codConsultaRealizada + ", consulta=" + consulta
+                + ", procedimento=" + procedimento + ", medicamento=" + medicamento + "]";
     }
+  
+
 
     
 }

@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import maissaudeplus.model.dao.ConsultaDAO;
@@ -51,6 +52,9 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     @FXML
     private Label labelTotalConsultasRealizadas;
 
+    @FXML
+    private CheckBox checkBoxPaciente;
+
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
 
@@ -72,8 +76,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     private void loadComboBoxConsulta() {
         consultaDAO.setConnection(connection);
         ObservableList<Consulta> lista = FXCollections.observableArrayList(consultaDAO.listarConsultasAgendadas());
-        comboBoxSelecionarConsulta.setItems(lista);
-        
+        comboBoxSelecionarConsulta.setItems(lista);  
     }
 
     @FXML
@@ -114,6 +117,15 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             consultaRealizada.setConsulta(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem());
             consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem());
             consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem());
+
+            boolean selecionado = checkBoxPaciente.isSelected();
+            if(selecionado){
+                ConsultaDAO consultaDAO = new ConsultaDAO();
+                consultaDAO.setConnection(connection);
+                int consulta = consultaRealizada.getConsulta().getCodConsulta();
+                String status = "Realizada";
+                consultaDAO.alterarStatusConsulta(status,consulta);
+            }
 
             if(consultaRealizadaDAO.buscarConsultaRealizada(consultaRealizada)){
                 Alert alert = new Alert(AlertType.ERROR);

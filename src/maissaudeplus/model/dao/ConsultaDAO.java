@@ -200,6 +200,22 @@ public class ConsultaDAO {
         return false;
     }
 
+    public boolean alterarStatusConsulta(String status, int consulta) {
+        String sql = "UPDATE Consulta "
+                + " SET statusconsulta=? "
+                + " WHERE codconsulta = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, status);
+            stmt.setInt(2, consulta);
+            stmt.execute();
+            return true;
+        } catch (SQLException e) {
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+
     public List<Consulta> listarPorMedico(Medico m, LocalDate data) {
         List<Consulta> retorno = new ArrayList();
         String sql = "SELECT * FROM Consulta WHERE medico_codmedico = ? AND dataconsulta = ?";
