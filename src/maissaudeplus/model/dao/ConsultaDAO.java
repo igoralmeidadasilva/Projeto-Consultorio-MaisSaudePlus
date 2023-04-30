@@ -270,7 +270,7 @@ public class ConsultaDAO {
     }
 
     public int listarQuantidadeConsultasPorDia(int medicoSelecionado){
-        String sql = "SELECT CAST(COUNT(cr.consulta_codconsulta) AS INTEGER) AS total FROM consultarealizada cr, consulta co, medico me WHERE cr.consulta_codconsulta = co.codconsulta AND co.medico_codmedico = ? GROUP BY me.nomemedico";
+        String sql = "SELECT CAST(COUNT(co.codconsulta) AS INT) AS total FROM consulta co, consultarealizada cr, medico me WHERE co.codconsulta = cr.consulta_codconsulta AND co.medico_codmedico = ? GROUP BY me.nomemedico";
         int retorno = 0;
         MedicoDAO medicoDAO = new MedicoDAO();
         medicoDAO.setConnection(connection);

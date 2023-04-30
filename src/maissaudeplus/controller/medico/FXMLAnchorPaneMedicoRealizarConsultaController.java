@@ -80,7 +80,6 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     private void loadComboBoxPaciente() {
         if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null){
             mostrarTotalConsultasPorMedico();
-            System.out.println();
             Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
             consultaDAO.setConnection(connection);
             ObservableList<Paciente> lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
