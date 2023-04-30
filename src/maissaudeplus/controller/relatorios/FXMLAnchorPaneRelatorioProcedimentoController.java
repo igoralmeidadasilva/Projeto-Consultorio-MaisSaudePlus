@@ -1,9 +1,11 @@
 package maissaudeplus.controller.relatorios;
 
-import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,10 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import maissaudeplus.model.dao.ProcedimentoRelatorioDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.ProcedimentoRelatorio;
+import maissaudeplus.model.dao.ProcedimentoRelatorioDAO;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
