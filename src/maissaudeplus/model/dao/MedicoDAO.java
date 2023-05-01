@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import maissaudeplus.model.domain.Medico;
+import maissaudeplus.model.domain.MedicoRelatorio;
 
 public class MedicoDAO {
 
@@ -133,4 +134,5 @@ public class MedicoDAO {
         }        
         return retorno;
     }
+
 }

@@ -9,7 +9,7 @@ public class Medico extends Pessoa{
     private LocalDate dataAdmissao;
 
     public Medico(){}
-    
+
     public Medico(int codMedico, String crmMedico, LocalDate dataAdmissao, String cpf, String nome, String email, String telefone) {
         super(cpf, nome, email, telefone);
         this.codMedico = codMedico;
