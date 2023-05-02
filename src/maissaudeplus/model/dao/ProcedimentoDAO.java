@@ -10,30 +10,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
+//=======
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
->>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
+//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
 import maissaudeplus.model.domain.Procedimento;
 
 public class ProcedimentoDAO {
 
     private Connection connection;
     
-<<<<<<< HEAD
+//<<<<<<< HEAD
     
-    private Connection connection;
-    
-=======
->>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
+//=======
+//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
     public Connection getConnection(){
         return connection;
     }
@@ -41,26 +39,29 @@ public class ProcedimentoDAO {
     public void setConnection(Connection connection){
         this.connection = connection;
     }
-<<<<<<< HEAD
+//<<<<<<< HEAD
     
     public List<Procedimento> listar(){
-        String sql = "SELECT * FROM procedimento";
-        List<Procedimento> retorno = new ArrayList();
-        try{
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
-            while (resultado.next()){
-                Procedimento procedimento = new Procedimento();
-                procedimento.setCodProcedimento(resultado.getInt("codprocedimento"));
-                procedimento.setNomeProcedimento(resultado.getString("nomeprocedimento"));
-                procedimento.setDescProcedimento(resultado.getString("descprocedimento")); 
-                procedimento.setValorProcedimento(resultado.getDouble("valorprocedimento"));
-                procedimento.setFlagObesidade(resultado.getBoolean("flagobesidade"));
-                retorno.add(procedimento);
+    String sql = "SELECT * FROM Procedimento";
+    List<Procedimento> retorno = new ArrayList<Procedimento>();
+    try{
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        ResultSet resultado = stmt.executeQuery();
+        while(resultado.next()){
+            Procedimento procedimento = new Procedimento();
+
+            //Obtendo os atributos "básicos"
+            procedimento.setCodProcedimento(resultado.getInt("codprocedimento"));
+            procedimento.setNomeProcedimento(resultado.getString("nomeProcedimento"));
+            procedimento.setDescProcedimento(resultado.getString("descProcedimento"));
+            procedimento.setValorProcedimento(resultado.getDouble("valorProcedimento"));
+            procedimento.setFlagObesidade(resultado.getBoolean("flagObesidade"));
+            //Adicionando a Lista de retorno
+            retorno.add(procedimento); 
             }
-        } catch(SQLException e){
-            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
+        } catch (SQLException e){
+            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
+        }    
         return retorno;
     }
     
@@ -120,7 +121,7 @@ public class ProcedimentoDAO {
                 retorno.setNomeProcedimento(resultado.getString("nomeprocedimento"));
                 retorno.setDescProcedimento(resultado.getString("descprocedimento")); 
                 retorno.setValorProcedimento(resultado.getDouble("valorprocedimento"));
-                retorno.setFlagObesidade(resultado.getBoolean("flagobesidade"));;
+                retorno.setFlagObesidade(resultado.getBoolean("flagobesidade"));
             }
         } catch(SQLException e) {
             Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -142,33 +143,7 @@ public class ProcedimentoDAO {
         }
         return retorno;
     }
-}
-=======
-
-    public List<Procedimento> listar(){
-        String sql = "SELECT * FROM Procedimento";
-        List<Procedimento> retorno = new ArrayList<Procedimento>();
-        try{
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
-            while(resultado.next()){
-                Procedimento procedimento = new Procedimento();
-                
-                //Obtendo os atributos "básicos"
-                procedimento.setCodProcedimento(resultado.getInt("codprocedimento"));
-                procedimento.setNomeProcedimento(resultado.getString("nomeProcedimento"));
-                procedimento.setDescProcedimento(resultado.getString("descProcedimento"));
-                procedimento.setValorProcedimento(resultado.getDouble("valorProcedimento"));
-                procedimento.setFlagObesidade(resultado.getBoolean("flagObesidade"));
-                //Adicionando a Lista de retorno
-                retorno.add(procedimento); 
-            }
-        } catch (SQLException e){
-            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
-        }    
-        return retorno;
-    }
-    
+//=======
     public Map<Procedimento, Integer> relatorioQtde(){
         String sql = "SELECT 	p.codprocedimento AS codigo, " +
 		"p.nomeprocedimento AS nome, " +
@@ -200,5 +175,4 @@ public class ProcedimentoDAO {
         }  
         return retorno;
     }   
-}
->>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
+}//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca

@@ -71,8 +71,8 @@ public class FXMLAnchorPaneFuncionarioVisualizarProcedimentoController implement
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Configurando colunas da tabela
-        tableColumnProcedimentoCodigo.setCellValueFactory(new PropertyValueFactory<>("codprocedimento"));
-        tableColumnProcedimentoNome.setCellValueFactory(new PropertyValueFactory<>("nomeprocedimento"));
+        tableColumnProcedimentoCodigo.setCellValueFactory(new PropertyValueFactory<>("codProcedimento"));
+        tableColumnProcedimentoNome.setCellValueFactory(new PropertyValueFactory<>("nomeProcedimento"));
         //Carregando o table view
         loadTableView();
         //Adicionando o Listener do TableView

@@ -77,7 +77,7 @@
                               <Font name="Segoe UI" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelProcedimentoDescricao" prefHeight="97.0" prefWidth="222.0" styleClass="labelInformacoes" GridPane.rowIndex="3">
+                        <Label fx:id="labelProcedimentoDescricao" prefHeight="97.0" prefWidth="222.0" styleClass="labelInformacoes" underline="true" GridPane.rowIndex="3">
                            <font>
                               <Font name="Segoe UI" size="14.0" />
                            </font>
