@@ -66,6 +66,10 @@ public class Procedimento {
     public void setGrupoCorpo(String grupoCorpo) {
         this.grupoCorpo = grupoCorpo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return " " + nomeProcedimento;
+    }
+   
 }

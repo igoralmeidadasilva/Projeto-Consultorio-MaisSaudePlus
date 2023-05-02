@@ -108,6 +108,11 @@ public class Consulta {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
+
+    @Override
+    public String toString() {
+        return "" + codConsulta ;
+    }
    
    
 }

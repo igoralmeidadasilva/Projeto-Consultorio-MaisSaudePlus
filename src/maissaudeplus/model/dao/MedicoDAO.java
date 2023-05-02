@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import maissaudeplus.model.domain.Medico;
+import maissaudeplus.model.domain.MedicoRelatorio;
 
 public class MedicoDAO {
 
@@ -38,6 +39,23 @@ public class MedicoDAO {
                 medico.setEmail(resultado.getString("email"));
                 medico.setTelefone(resultado.getString("telefone"));
                 retorno.add(medico);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(MedicoDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
+
+    public List<String> listarMedicoPorNome() {
+        String sql = "SELECT nomemedico FROM medico";
+        List<String> retorno = new ArrayList();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                Medico medico = new Medico();
+                medico.setNome(resultado.getString("nomeMedico"));
+                retorno.add(medico.getNome());
             }
         } catch (SQLException e) {
             Logger.getLogger(MedicoDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -116,4 +134,5 @@ public class MedicoDAO {
         }        
         return retorno;
     }
+
 }

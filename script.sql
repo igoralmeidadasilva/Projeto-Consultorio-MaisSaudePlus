@@ -146,7 +146,7 @@ INSERT INTO Paciente (cpf, nomePaciente, dataNascimento, altura, peso, sexo, ema
 				    ('47823685212', 'EVANDRO ARAUJO', '1985-09-01', 1.67, 95, 'M', 'EvandroFlamengo@hotmail.com', '(28)99945-8621', 0);
 
 INSERT INTO Funcionario (nomefuncionario, dataadmissao, cpffuncionario, emailfuncionario, telefone)
-	  VALUES	('Luiza Moreira', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845');
+	  VALUES	('LUIZA MOREIRA', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845');
 
 INSERT INTO Consulta (medico_codmedico, funcionario_codfuncionario, paciente_codpaciente, dataconsulta, horaconsulta, duracaoconsulta, statusconsulta)
 	  VALUES	(1, 1, 1, '2023-05-28', '13:00', 60, 'Agendada');

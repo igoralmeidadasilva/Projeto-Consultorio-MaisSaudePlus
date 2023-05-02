@@ -24,6 +24,18 @@ public class FXMLVBoxMedicoMainController implements Initializable {
 
     @FXML
     private JFXButton buttonRealizarConsulta;
+    
+    @FXML
+    private JFXButton buttonConsultaPorMes;
+
+    @FXML
+    private JFXButton buttonProcedimentosPorMedico;
+      
+    @FXML
+    private JFXButton buttonRelatorioProcedimento;
+
+    @FXML
+    private JFXButton buttonRelatorioMedico;
 
     @FXML
     private JFXButton buttonClose;
@@ -32,6 +44,10 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     private AnchorPane anchorPaneBase;
 
     private AnchorPane anchorPaneRealizarConsulta;
+    private AnchorPane anchorPaneGraficoPorMes;
+    private AnchorPane anchorPaneGraficoPorProcedimento;
+    private AnchorPane anchorPaneRelatorioProcedimento;
+    private AnchorPane anchorPaneRelatorioMedico;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,12 +77,60 @@ public class FXMLVBoxMedicoMainController implements Initializable {
         }
 
 
-        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 200.0);
-        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,200.0 );
-        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 200.0);
-        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 200.0);
+        AnchorPane.setTopAnchor(anchorPaneRealizarConsulta, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneRealizarConsulta,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRealizarConsulta, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 0.0);
         
         anchorPaneBase.getChildren().setAll(anchorPaneRealizarConsulta);
         
     }
+    
+    @FXML
+    public void handleButtonConsultaPorMes() throws IOException {
+        if(anchorPaneGraficoPorMes == null){
+            anchorPaneGraficoPorMes = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/medico/FXMLAnchorPaneMedicoGraficoConsultasPorMes.fxml"));
+        }
+        AnchorPane.setTopAnchor(anchorPaneGraficoPorMes, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneGraficoPorMes,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneGraficoPorMes, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneGraficoPorMes, 0.0);
+        anchorPaneBase.getChildren().setAll(anchorPaneGraficoPorMes);
+    }
+
+    @FXML
+    public void handleButtonCustoProcedimentoPorMedico() throws IOException {
+        if(anchorPaneGraficoPorProcedimento == null){
+            anchorPaneGraficoPorProcedimento = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/medico/FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedico.fxml"));
+        }
+        AnchorPane.setTopAnchor(anchorPaneGraficoPorProcedimento, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneGraficoPorProcedimento,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneGraficoPorProcedimento, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneGraficoPorProcedimento, 0.0);
+        anchorPaneBase.getChildren().setAll(anchorPaneGraficoPorProcedimento);
+    }
+    
+    @FXML
+    void handleButtonRelatorioProcedimento() throws IOException {
+        if(anchorPaneRelatorioProcedimento == null){
+            anchorPaneRelatorioProcedimento = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/relatorios/FXMLAnchorPaneRelatorioProcedimento.fxml"));
+        }
+        AnchorPane.setTopAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneRelatorioProcedimento,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneRelatorioProcedimento, 0.0);
+        anchorPaneBase.getChildren().setAll(anchorPaneRelatorioProcedimento);
+    }    
+
+    @FXML
+    void handleButtonRelatorioMedico() throws IOException {
+        if(anchorPaneRelatorioMedico == null){
+            anchorPaneRelatorioMedico = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/relatorios/FXMLAnchorPaneRelatorioMedico.fxml"));
+        }
+        AnchorPane.setTopAnchor(anchorPaneRelatorioMedico, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneRelatorioMedico,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneRelatorioMedico, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneRelatorioMedico, 0.0);
+        anchorPaneBase.getChildren().setAll(anchorPaneRelatorioMedico);
+    }    
 }
