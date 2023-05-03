@@ -25,42 +25,41 @@ public class ProcedimentoGastoRelatorioDAO {
         this.connection = connection;
     }
     //########################## mudar para valor total
-    public List<ProcedimentoGastoRelatorio> listar(){
-        String sql = "SELECT 	p.codprocedimento AS codigo, " +
-		"p.nomeprocedimento AS nome, " +
-		"p.valorprocedimento AS valor, " +
-		"p.descprocedimento AS descricao," +
-		"p.flagobesidade AS flag, " +
-                // verificar se a sintaxe está correta
-		"p.nomeprocedimento, SUM(cr.valorprocedimento) AS soma" +
-		"FROM	procedimento cr, " +
-                "GROUP BY codprocedimento" +
-                // --------
-		"procedimento p " +
-		"WHERE cr.procedimento_codprocedimento = p.codprocedimento " +
-		"GROUP BY p.codprocedimento, p.nomeprocedimento " +
-		"ORDER BY p.codprocedimento";
-        List<ProcedimentoGastoRelatorio> retorno = new ArrayList<ProcedimentoGastoRelatorio>();
-        try{
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
-            while(resultado.next()){
-                Procedimento procedimento = new Procedimento();
-                //Obtendo os atributos "básicos"
-                procedimento.setCodProcedimento(resultado.getInt("codigo"));
-                procedimento.setNomeProcedimento(resultado.getString("nome"));
-                procedimento.setDescProcedimento(resultado.getString("descricao"));
-                procedimento.setValorProcedimento(resultado.getDouble("valor"));
-                procedimento.setFlagObesidade(resultado.getBoolean("flag"));
-                
-                double soma = resultado.getDouble("soma");
-                
-                ProcedimentoGastoRelatorio procedimentoRelatorio = new ProcedimentoGastoRelatorio(procedimento, soma);
-                retorno.add(procedimentoRelatorio); 
-            }
-        } catch (SQLException e){
-            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
-        }    
-        return retorno;
-    }
+//    public List<ProcedimentoGastoRelatorio> listar(){
+//        String sql = "SELECT 	p.codprocedimento AS codigo, " +
+//		"p.nomeprocedimento AS nome, " +
+//		"p.valorprocedimento AS valor, " +
+//		"p.descprocedimento AS descricao," +
+//		"p.flagobesidade AS flag, " +
+//                // verificar se a sintaxe está correta
+//		"p.nomeprocedimento, SUM(p.valorprocedimento) AS soma " +
+//		"FROM	procedimento p, consultarealizada cr" +
+//                // --------
+//		
+//		"WHERE cr.procedimento_codprocedimento = p.codprocedimento " +
+//		"GROUP BY p.codprocedimento, p.codprocedimento, p.nomeprocedimento " +
+//		"ORDER BY p.codprocedimento";
+//        List<ProcedimentoGastoRelatorio> retorno = new ArrayList<ProcedimentoGastoRelatorio>();
+//        try{
+//            PreparedStatement stmt = connection.prepareStatement(sql);
+//            ResultSet resultado = stmt.executeQuery();
+//            while(resultado.next()){
+//                Procedimento procedimento = new Procedimento();
+//                //Obtendo os atributos "básicos"
+//                procedimento.setCodProcedimento(resultado.getInt("codigo"));
+//                procedimento.setNomeProcedimento(resultado.getString("nome"));
+//                procedimento.setDescProcedimento(resultado.getString("descricao"));
+//                procedimento.setValorProcedimento(resultado.getDouble("valor"));
+//                procedimento.setFlagObesidade(resultado.getBoolean("flag"));
+//                
+//                double soma = resultado.getDouble("soma");
+//                
+//                ProcedimentoGastoRelatorio procedimentoRelatorio = new ProcedimentoGastoRelatorio(procedimento, soma);
+//                retorno.add(procedimentoRelatorio); 
+//            }
+//        } catch (SQLException e){
+//            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
+//        }    
+//        return retorno;
+//    }
 }

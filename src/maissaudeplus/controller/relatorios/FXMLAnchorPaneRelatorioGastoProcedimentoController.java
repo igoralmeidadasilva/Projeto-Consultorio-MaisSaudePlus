@@ -62,12 +62,12 @@ public class FXMLAnchorPaneRelatorioGastoProcedimentoController implements Initi
         tableColumnValor.setCellValueFactory(new PropertyValueFactory<>("valorProcedimento"));
         tableColumnValorTotal.setCellValueFactory(new PropertyValueFactory<>("soma"));
         tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<>("descProcedimento"));
-        loadTableView();
+        //loadTableView();
     }
     
     public void loadTableView(){
         procedimentoGastoRelatorioDAO.setConnection(connection);
-        listaProcedimento = FXCollections.observableArrayList(procedimentoGastoRelatorioDAO.listar());
+        //listaProcedimento = FXCollections.observableArrayList(procedimentoGastoRelatorioDAO.listar());
         tableView.setItems(listaProcedimento);  
     }
 
