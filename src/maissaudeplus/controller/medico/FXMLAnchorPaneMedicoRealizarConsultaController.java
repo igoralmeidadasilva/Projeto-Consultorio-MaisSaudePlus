@@ -141,7 +141,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
                 consultaRealizadaDAO.inserir(consultaRealizada);
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setContentText("Consulta realizada com sucesso!");
-                alert.show();
+                alert.show(); 
             } 
         } else {
             Alert alert = new Alert(AlertType.ERROR);
