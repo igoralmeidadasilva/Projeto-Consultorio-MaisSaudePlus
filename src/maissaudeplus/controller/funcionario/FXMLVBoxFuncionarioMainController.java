@@ -35,6 +35,9 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     
     @FXML
     private JFXButton buttonCadastrarMedico;
+
+    @FXML
+    private JFXButton buttonCadastrarProcedimento;
     
     //Botão que fecha o programa
     @FXML
@@ -48,6 +51,7 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     private AnchorPane anchorPaneAgendarConsulta;
     private AnchorPane anchorPaneCadastrarPaciente;
     private AnchorPane anchorPaneCadastrarMedico;
+    private AnchorPane anchorPaneCadastrarProcedimento;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,6 +118,22 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
         AnchorPane.setRightAnchor(anchorPaneCadastrarMedico, 0.0);
         //Método que carrega o anchorPaneCadastroMedico no anchorPaneBase
         anchorPaneBase.getChildren().setAll(anchorPaneCadastrarMedico);
+    }
+    
+    @FXML
+    public void handleButtonCadastrarProcedimento() throws IOException {
+        //Método de configuração do botão que troca o anchor pane base pelo anchor pane de cadastro de medico.
+        //Este método carrega a o Anchor Pane responsavel pelo cadastro de medico.
+        if(anchorPaneCadastrarProcedimento == null){
+            anchorPaneCadastrarProcedimento = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/funcionario/FXMLAnchorPaneFuncionarioVisualizarProcedimento.fxml"));
+        }
+        //Os métodos abaixo configurão as restrições do anchor pane para que ele possa ser redimensionado
+        AnchorPane.setTopAnchor(anchorPaneCadastrarProcedimento, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneCadastrarProcedimento,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneCadastrarProcedimento, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneCadastrarProcedimento, 0.0);
+        //Método que carrega o anchorPaneCadastroMedico no anchorPaneBase
+        anchorPaneBase.getChildren().setAll(anchorPaneCadastrarProcedimento);
     }
     
     @FXML
