@@ -125,7 +125,7 @@ public class ConsultaDAO {
     }
 
     public Paciente listarPorPaciente(int consultaSelecionada) {
-        String sql = "SELECT nomepaciente FROM paciente p, consulta co,consultarealizada cr WHERE p.codpaciente = co.paciente_codpaciente AND co.codconsulta = ?";
+        String sql = "SELECT nomepaciente FROM paciente p, consulta co WHERE p.codpaciente = co.paciente_codpaciente AND co.codconsulta = ?";
         Paciente retorno = new Paciente();
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.setConnection(connection);
