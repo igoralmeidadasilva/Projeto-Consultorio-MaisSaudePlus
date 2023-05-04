@@ -51,6 +51,7 @@ public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController imp
         carregarGrafico();
     } 
 
+    @FXML
     private void carregarGrafico(){
         barChart.getData().clear();
         medicoDAO.setConnection(connection);
