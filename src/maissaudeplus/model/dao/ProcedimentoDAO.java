@@ -94,13 +94,14 @@ public class ProcedimentoDAO {
     }
     
     public boolean alterar(Procedimento procedimento){
-        String sql = "UPDATE procedimento SET nomeprocedimento=?, descprocedimento=?, valorprocedimento=?, flagobesidade=?";
+        String sql = "UPDATE procedimento SET nomeprocedimento=?, descprocedimento=?, valorprocedimento=?, flagobesidade=? WHERE codprocedimento=?";
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, procedimento.getNomeProcedimento());
             stmt.setString(2, procedimento.getDescProcedimento());
             stmt.setDouble(3, procedimento.getValorProcedimento());
             stmt.setBoolean(4, procedimento.isFlagObesidade());
+            stmt.setInt(5, procedimento.getCodProcedimento());
             stmt.execute();
             return true;
         } catch (SQLException e){
