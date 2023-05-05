@@ -145,6 +145,27 @@ public class ProcedimentoDAO {
         return retorno;
     }
 //=======
+        
+    public Map<Integer, Integer> listarQuantidadeProcedimentoPorMes(int ano) {
+        String sql = "SELECT COUNT (cr.procedimento_codprocedimento) AS qtde, EXTRACT (MONTH FROM co.dataconsulta) AS mes " +
+                        "from consultarealizada cr, consulta co " +
+                        "WHERE cr.consulta_codconsulta = co.codconsulta " +
+                        "GROUP BY mes ORDER BY mes ASC";
+        Map<Integer, Integer> retorno = new HashMap();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            //stmt.setInt(1, ano);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                retorno.put(resultado.getInt("mes"), resultado.getInt("qtde"));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
+        
+    
     public Map<Procedimento, Integer> relatorioQtde(){
         String sql = "SELECT 	p.codprocedimento AS codigo, " +
 		"p.nomeprocedimento AS nome, " +
