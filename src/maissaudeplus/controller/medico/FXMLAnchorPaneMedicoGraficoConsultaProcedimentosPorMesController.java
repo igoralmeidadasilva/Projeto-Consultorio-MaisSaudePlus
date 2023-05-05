@@ -65,7 +65,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController im
             XYChart.Data<String, Integer> dado = new XYChart.Data<>(mes, valor);
             serie.getData().add(dado);
         }
-        barChart.setTitle("Consultas X Mês");
+        barChart.setTitle("Procedimento X Mês");
         barChart.getData().add(serie);
     }
     

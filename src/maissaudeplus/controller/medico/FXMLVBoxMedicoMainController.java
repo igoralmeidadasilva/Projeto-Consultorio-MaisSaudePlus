@@ -152,7 +152,8 @@ public class FXMLVBoxMedicoMainController implements Initializable {
         AnchorPane.setLeftAnchor(anchorPaneRelatorioGastoProcedimento, 0.0);
         AnchorPane.setRightAnchor(anchorPaneRelatorioGastoProcedimento, 0.0);
         anchorPaneBase.getChildren().setAll(anchorPaneRelatorioGastoProcedimento);
-    }   
+    }
+    
     @FXML
     void handleButtonRelatorioMedico() throws IOException {
         if(anchorPaneRelatorioMedico == null){

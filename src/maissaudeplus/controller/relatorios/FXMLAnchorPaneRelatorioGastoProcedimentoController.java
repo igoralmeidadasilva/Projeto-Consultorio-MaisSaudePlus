@@ -62,16 +62,16 @@ public class FXMLAnchorPaneRelatorioGastoProcedimentoController implements Initi
         tableColumnValor.setCellValueFactory(new PropertyValueFactory<>("valorProcedimento"));
         tableColumnValorTotal.setCellValueFactory(new PropertyValueFactory<>("soma"));
         tableColumnDescricao.setCellValueFactory(new PropertyValueFactory<>("descProcedimento"));
-        //loadTableView();
+        loadTableView();
     }
     
     public void loadTableView(){
         procedimentoGastoRelatorioDAO.setConnection(connection);
-        //listaProcedimento = FXCollections.observableArrayList(procedimentoGastoRelatorioDAO.listar());
-        tableView.setItems(listaProcedimento);  
+        listaProcedimento = FXCollections.observableArrayList(procedimentoGastoRelatorioDAO.listar());
+        tableView.setItems(listaProcedimento);
     }
 
-    // necessáio criar o arquivo com o mesmo nome
+    /* necessáio criar o arquivo com o mesmo nome
     @FXML
     public void handleButtonImprimir() throws JRException{
         URL url = getClass().getResource("/maissaudeplus/relatorios/MaisSaudePlus_RelatorioGastoProcedimento.jasper");
@@ -80,6 +80,7 @@ public class FXMLAnchorPaneRelatorioGastoProcedimentoController implements Initi
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, connection);
         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
         jasperViewer.setVisible(true);
-    }  
+    }
+    */
 }
 

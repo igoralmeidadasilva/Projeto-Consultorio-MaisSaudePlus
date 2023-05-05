@@ -11,7 +11,7 @@ public class ProcedimentoGastoRelatorio extends Procedimento{
         this.soma = soma;
     }
 
-    public Double getQtde() {
+    public Double getSoma() {
         return soma;
     }
 
