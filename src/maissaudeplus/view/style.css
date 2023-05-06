@@ -160,7 +160,7 @@
     -fx-background-color: #e6f6eb;   
 }
 .table-row-cell:even{
-    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-background-color: derive(#FFFFFF, 10%);
 }
 .table-view .column-header,
 .table-view .column-header-background .filler {
