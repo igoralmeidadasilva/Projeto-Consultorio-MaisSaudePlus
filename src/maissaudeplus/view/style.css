@@ -150,9 +150,21 @@
 }
 
 /*Referente as tableviews usadas no software*/
+.table-view{
+    -fx-border-color: #97ae8d;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell{
+    -fx-border-color: #d9ebd5;
+    -fx-background-color: #e6f6eb;   
+}
+.table-row-cell:even{
+    -fx-background-color: derive(-fx-primary, 10%);
+}
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    -fx-background-color: #08005C; 
+    -fx-background-color: #71ac49; 
 }
 
 .table-view .column-header .label{
@@ -168,8 +180,9 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #5d2b9e; 
-    -fx-text-background-color:#FFFFFF;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: #e0dede; 
+    -fx-text-background-color: Black;
 }
 
 .searchableComboBox{
