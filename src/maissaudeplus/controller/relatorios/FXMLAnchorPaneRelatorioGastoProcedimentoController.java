@@ -71,7 +71,6 @@ public class FXMLAnchorPaneRelatorioGastoProcedimentoController implements Initi
         tableView.setItems(listaProcedimento);
     }
 
-    /* necessáio criar o arquivo com o mesmo nome
     @FXML
     public void handleButtonImprimir() throws JRException{
         URL url = getClass().getResource("/maissaudeplus/relatorios/MaisSaudePlus_RelatorioGastoProcedimento.jasper");
@@ -81,6 +80,5 @@ public class FXMLAnchorPaneRelatorioGastoProcedimentoController implements Initi
         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
         jasperViewer.setVisible(true);
     }
-    */
 }
 

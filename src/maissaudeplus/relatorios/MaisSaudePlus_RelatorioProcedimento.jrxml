@@ -87,7 +87,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Quantidade]]></text>
+				<text><![CDATA[Valor Total]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="290" y="28" width="265" height="15" forecolor="#000000" backcolor="#000000" uuid="9df7d863-4a6d-4ad3-8295-4a6a21136efa">

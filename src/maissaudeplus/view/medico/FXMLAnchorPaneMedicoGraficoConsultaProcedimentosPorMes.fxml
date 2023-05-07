@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <BarChart fx:id="barChart" layoutX="14.0" layoutY="52.0" prefHeight="478.0" prefWidth="780.0" title="Quantidade De Procedimentos Por Mês" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="52.0">
+      <BarChart fx:id="barChart" layoutX="14.0" layoutY="52.0" prefHeight="478.0" prefWidth="780.0" title="Procedimento X Mês" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="52.0">
          <xAxis>
             <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
          </xAxis>
@@ -18,6 +18,6 @@
             <NumberAxis fx:id="numberAxis" side="LEFT" />
          </yAxis>
       </BarChart>
-      <JFXButton fx:id="buttonRecarregar" layoutX="679.0" layoutY="533.0" prefHeight="31.0" prefWidth="100.0" styleClass="JFXButtonInserir" text="Recarregar" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="21.0" />
+      <JFXButton fx:id="buttonRecarregar" layoutX="679.0" layoutY="533.0" onAction="#handleButtonRecarregar" prefHeight="31.0" prefWidth="100.0" styleClass="JFXButtonInserir" text="Recarregar" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="21.0" />
    </children>
 </AnchorPane>
