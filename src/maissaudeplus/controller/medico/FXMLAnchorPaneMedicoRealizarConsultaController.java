@@ -148,5 +148,14 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             alert.setContentText("Consulta não foi registrada devido ao não preenchimento dos campos!");
             alert.show();     
         }
+
+        limparCampos();
+    }
+
+    public void limparCampos(){
+        loadComboBoxConsulta();
+        comboBoxSelecionarPaciente.setItems(null);
+        loadComboBoxProcedimento();
+        loadComboBoxMedicamento();
     }
 }         
