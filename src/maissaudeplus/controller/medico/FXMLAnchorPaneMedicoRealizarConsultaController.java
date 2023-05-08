@@ -81,11 +81,16 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     @FXML
     private void loadComboBoxPaciente() {
+        ObservableList<Paciente> lista = FXCollections.observableArrayList();
+            
         if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null){
             mostrarTotalConsultasPorMedico();
             Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
             consultaDAO.setConnection(connection);
-            ObservableList<Paciente> lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
+            lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
+            comboBoxSelecionarPaciente.setItems(lista);
+        } else {
+            lista.clear();
             comboBoxSelecionarPaciente.setItems(lista);
         }
     }
@@ -154,7 +159,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     public void limparCampos(){
         loadComboBoxConsulta();
-        comboBoxSelecionarPaciente.setItems(null);
+        loadComboBoxPaciente();
         loadComboBoxProcedimento();
         loadComboBoxMedicamento();
     }
