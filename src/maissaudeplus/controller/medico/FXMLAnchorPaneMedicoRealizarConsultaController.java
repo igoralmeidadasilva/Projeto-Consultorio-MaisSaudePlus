@@ -132,7 +132,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             consultaRealizada.setMedicamento(comboBoxSelecionarMedicamento.getSelectionModel().getSelectedItem());
             consultaRealizada.setProcedimento(comboBoxSelecionarProcedimento.getSelectionModel().getSelectedItem());
             pacienteEstaPresente();
-              
+                
             if(consultaRealizadaDAO.buscarConsultaRealizada(consultaRealizada)){
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText("Consulta já foi registrada!");
