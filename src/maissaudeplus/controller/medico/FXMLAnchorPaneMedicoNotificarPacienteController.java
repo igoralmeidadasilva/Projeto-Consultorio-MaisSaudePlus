@@ -110,7 +110,7 @@ public class FXMLAnchorPaneMedicoNotificarPacienteController implements Initiali
             message.setFrom(new InternetAddress("contato.maissaudeplus@gmail.com"));
             message.setRecipients(javax.mail.Message.RecipientType.TO, destinatarios);
             message.setSubject("Alerta de saúde");
-            message.setText("Prezado(a),\n" +
+            message.setText("Prezado(a) " + paciente.getNome() +
                             "Temos a honra de convidá-lo (a) para participar dos progamas de saúde e bem estar " 
                           + "Oferecidos pela clínica Mais Saúde Plus. "
                           + "Público-alvo:\n" +

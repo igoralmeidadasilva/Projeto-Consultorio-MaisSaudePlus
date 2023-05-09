@@ -27,12 +27,16 @@ ORDER BY me.nomemedico ASC]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="80" splitType="Stretch">
+		<band height="84" splitType="Stretch">
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="3eb8e1ab-7e38-4368-89db-62b6501a8c67"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Mais Saúde Plus]]></text>
 			</staticText>
+			<image>
+				<reportElement x="490" y="13" width="50" height="50" uuid="b85be6f4-3b16-4373-8799-47c6e63c67ee"/>
+				<imageExpression><![CDATA["http://whatsrel.com.br/wp-content/uploads/2019/06/conexos.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

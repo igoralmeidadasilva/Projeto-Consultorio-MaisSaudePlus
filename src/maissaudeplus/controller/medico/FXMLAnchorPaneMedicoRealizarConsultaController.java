@@ -1,17 +1,13 @@
 package maissaudeplus.controller.medico;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
-
 import org.controlsfx.control.SearchableComboBox;
-
 import com.jfoenix.controls.JFXButton;
 import java.time.LocalDate;
 import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -90,11 +86,16 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     @FXML
     private void loadComboBoxPaciente() {
+        ObservableList<Paciente> lista = FXCollections.observableArrayList();
+            
         if(comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem() != null){
             mostrarTotalConsultasPorMedico();
             Consulta consultaSelecionada = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
             consultaDAO.setConnection(connection);
-            ObservableList<Paciente> lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
+            lista = FXCollections.observableArrayList(consultaDAO.listarPorPaciente(consultaSelecionada.getCodConsulta()));
+            comboBoxSelecionarPaciente.setItems(lista);
+        } else {
+            lista.clear();
             comboBoxSelecionarPaciente.setItems(lista);
         }
     }
@@ -155,8 +156,6 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
                 Consulta consulta = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
                 Paciente paciente = consulta.getPaciente();
                 if (testeDeObesidade(paciente)){
-                    // PASSAR O MÉTODO PARA O IF
-                    //if (testeDeObesidade)
                     loadAnchorPaneNotificarPaciente(paciente);
                 }
             }
@@ -165,9 +164,17 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
             alert.setContentText("Consulta não foi registrada devido ao não preenchimento dos campos!");
             alert.show();     
         }
-   
+
+        limparCampos();
     }
 
+    public void limparCampos(){
+        loadComboBoxConsulta();
+        loadComboBoxPaciente();
+        loadComboBoxProcedimento();
+        loadComboBoxMedicamento();
+    }
+    
     //Método responsável pela abertura de uma nova janela dialog.fxml, retorna true caso o botão "Confirmar" seja clicado e false caso o botão "Cancelar" seja clicado
     public boolean loadAnchorPaneNotificarPaciente(Paciente paciente) throws IOException{
         //Instancia de um FXMLLoader
