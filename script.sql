@@ -152,12 +152,16 @@ INSERT INTO Consulta (medico_codmedico, funcionario_codfuncionario, paciente_cod
 	  VALUES	(1, 1, 1, '2023-05-28', '13:00', 60, 'Agendada');
 
 INSERT INTO Procedimento(nomeProcedimento, descProcedimento, valorProcedimento, flagObesidade)	
-    VALUES('Hemograma','Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)', 10.00, true),
+    VALUES
+          ('Não há procedimento', 'Não há procedimento',0,false),
+          ('Hemograma','Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)', 10.00, true),
           ('Cintilografia', 'Cintilografia para pesquisa de refluxo gastro-esofágico', 20.00, true),
           ('Hemoglobina glicada', 'Hemoglobina glicada (A1 total), dosagem', 18.00, true) ;     
 
 
 INSERT INTO Medicamento(nomeMedicamento,descMedicamento,valorMedicamento)
-    VALUES('Dietilpropiona', 'Dietilpropiona atua no sistema nervoso central, estimulando os neurônios a liberarem ou manterem elevados os níveis das catecolaminas, um grupo de neurotransmissores do qual fazem parte a dopamina e a norepinefrina.', 150.00),
+    VALUES
+          ('Não há medicamento','Não há medicamento',0),
+          ('Dietilpropiona', 'Dietilpropiona atua no sistema nervoso central, estimulando os neurônios a liberarem ou manterem elevados os níveis das catecolaminas, um grupo de neurotransmissores do qual fazem parte a dopamina e a norepinefrina.', 150.00),
           ('Sibutramina', 'Sibutramina atua no Sistema Nervoso Central (SNC) para inibir o apetite e aumentar a sensação de saciedade durante a alimentação', 50.00); 
 				
