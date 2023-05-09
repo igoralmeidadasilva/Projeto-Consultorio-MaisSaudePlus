@@ -226,7 +226,7 @@ public class FXMLAnchorPaneFuncionarioVisualizarPacienteController implements In
         //Mostrando a tela
         dialogStage.showAndWait();
         return controller.isButtonConfirmarClicked();
-    }  
+    }
     
     //Método responsável pela abertura de uma nova janela dialog.fxml, retorna true caso o botão "Confirmar" seja clicado e false caso o botão "Cancelar" seja clicado
     public boolean loadAnchorPaneAlterarPacienteDialog(Paciente paciente) throws IOException{

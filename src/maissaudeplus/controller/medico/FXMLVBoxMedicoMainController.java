@@ -56,6 +56,7 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     private AnchorPane anchorPaneRelatorioProcedimento;
     private AnchorPane anchorPaneRelatorioGastoProcedimento;
     private AnchorPane anchorPaneRelatorioMedico;
+    private AnchorPane AnchorPaneMedicoNotificarPaciente;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -91,7 +92,6 @@ public class FXMLVBoxMedicoMainController implements Initializable {
         AnchorPane.setRightAnchor(anchorPaneRealizarConsulta, 0.0);
         
         anchorPaneBase.getChildren().setAll(anchorPaneRealizarConsulta);
-        
     }
     
     @FXML

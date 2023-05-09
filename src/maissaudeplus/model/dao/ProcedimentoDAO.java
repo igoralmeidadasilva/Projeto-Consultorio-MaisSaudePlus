@@ -10,28 +10,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-//<<<<<<< HEAD
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//=======
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
 import maissaudeplus.model.domain.Procedimento;
 
 public class ProcedimentoDAO {
 
     private Connection connection;
     
-//<<<<<<< HEAD
-    
-//=======
-//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
     public Connection getConnection(){
         return connection;
     }
@@ -39,7 +31,6 @@ public class ProcedimentoDAO {
     public void setConnection(Connection connection){
         this.connection = connection;
     }
-//<<<<<<< HEAD
     
     public List<Procedimento> listar(){
     String sql = "SELECT * FROM Procedimento";
@@ -144,7 +135,6 @@ public class ProcedimentoDAO {
         }
         return retorno;
     }
-//=======
         
     public Map<Integer, Integer> listarQuantidadeProcedimentoPorMes(int ano) {
         String sql = "SELECT COUNT (cr.procedimento_codprocedimento) AS qtde, EXTRACT (MONTH FROM co.dataconsulta) AS mes " +
@@ -196,5 +186,26 @@ public class ProcedimentoDAO {
             Logger.getLogger(ProcedimentoDAO.class.getName()).log(Level.SEVERE, null, e);
         }  
         return retorno;
-    }   
-}//>>>>>>> dd50209afc1f01030e01367c4d2c3d6608cb52ca
+    }
+    
+        public Procedimento buscarPorCodigo(int codigo){
+        Procedimento retorno = new Procedimento();
+        String sql = "SELECT * FROM procedimento WHERE codprocedimento=?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            ResultSet resultado = stmt.executeQuery();
+            if (resultado.next()){
+                retorno.setCodProcedimento(resultado.getInt("codprocedimento"));
+                retorno.setNomeProcedimento(resultado.getString("nomeprocedimento"));
+                retorno.setDescProcedimento(resultado.getString("descprocedimento")); 
+                retorno.setValorProcedimento(resultado.getDouble("valorprocedimento"));
+                retorno.setFlagObesidade(resultado.getBoolean("flagobesidade"));
+            }
+        } catch(SQLException e) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
+    
+}

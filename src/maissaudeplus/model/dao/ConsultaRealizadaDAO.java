@@ -10,7 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import maissaudeplus.model.domain.Consulta;
 import maissaudeplus.model.domain.ConsultaRealizada;
+import maissaudeplus.model.domain.Medicamento;
+import maissaudeplus.model.domain.Paciente;
+import maissaudeplus.model.domain.Procedimento;
 
 public class ConsultaRealizadaDAO {
     private Connection connection;
@@ -68,5 +72,63 @@ public class ConsultaRealizadaDAO {
         }
         return retorno;
     
+    }
+    
+    //#########################################################################################################
+    // implementar o método listar por paciente (será usuado para carregar o paciente em minha tela
+    // listatPaciente();
+    public List<ConsultaRealizada> listarPorPaciente (Paciente paciente){
+        String sql = "SELECT codconsultarealizada, consulta_codconsulta, procedimento_codprocedimento, medicamento_codmedicamento " +
+                        "FROM	consultarealizada cr, " +
+                        "consulta co " +
+                        "WHERE cr.consulta_codconsulta = co.codconsulta " +
+                        "AND co.paciente_codpaciente = ?";
+        
+        List<ConsultaRealizada> retorno = new ArrayList();
+        
+        
+        ConsultaDAO consultaDAO = new ConsultaDAO();
+        consultaDAO.setConnection(connection);
+        
+        ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
+        procedimentoDAO.setConnection(connection);
+        
+        MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
+        medicamentoDAO.setConnection(connection);
+        
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, paciente.getCodPaciente());
+            ResultSet resultado = stmt.executeQuery();
+            while(resultado.next()){
+                Consulta consulta = new Consulta();
+                Procedimento procedimento = new Procedimento();
+                Medicamento medicamento = new Medicamento();
+                ConsultaRealizada consultaRealizada = new ConsultaRealizada();
+                
+                //Começando a preencher a consultaRealizada
+                consultaRealizada.setCodConsultaRealizada(resultado.getInt("codconsultarealizada"));
+                
+                //Buscando Consulta
+                consulta = consultaDAO.buscarPorCodigo(resultado.getInt("consulta_codconsulta"));
+                
+                //Buscando Procedimento
+                procedimento = procedimentoDAO.buscarPorCodigo(resultado.getInt("procedimento_codprocedimento"));
+                
+                //Buscando Médico
+                medicamento = medicamentoDAO.buscarPorCodigo(resultado.getInt("medicamento_codMedicamento"));
+                
+                //Terminando de preencher a consultaRealizada
+                consultaRealizada.setConsulta(consulta);
+                consultaRealizada.setProcedimento(procedimento);
+                consultaRealizada.setMedicamento(medicamento);
+                
+                //Adicionando a lista de retorno
+                retorno.add(consultaRealizada);
+            }           
+        } catch(SQLException e){
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
     }
 }

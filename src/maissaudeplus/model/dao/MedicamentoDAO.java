@@ -41,4 +41,23 @@ public class MedicamentoDAO {
         }
         return retorno;
     }
+    
+       public Medicamento buscarPorCodigo(int codigo){
+        String sql = "SELECT * FROM medicamento WHERE codmedicamento = ?";
+        Medicamento retorno = new Medicamento();
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            ResultSet resultado = stmt.executeQuery();
+            if (resultado.next()){
+                retorno.setCodMedicamento(resultado.getInt("codMedicamento"));
+                retorno.setNomeMedicamento(resultado.getString("nomeMedicamento"));
+                retorno.setDescMedicamento(resultado.getString("descMedicamento"));  
+                retorno.setValorMedicamento(resultado.getDouble("valorMedicamento"));
+            }
+        } catch(SQLException e){
+            Logger.getLogger(MedicamentoDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return retorno;
+    }
 }

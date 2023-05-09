@@ -296,4 +296,53 @@ public class ConsultaDAO {
         }
         return retorno;
     }
+    
+    public Consulta buscarPorCodigo (int codigo){
+        String sql = "SELECT * FROM Consulta WHERE codconsulta = ?";
+        Consulta retorno = new Consulta();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionarioDAO.setConnection(connection);
+        MedicoDAO medicoDAO = new MedicoDAO();
+        medicoDAO.setConnection(connection);
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        pacienteDAO.setConnection(connection);
+        
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            ResultSet resultado = stmt.executeQuery();
+            if (resultado.next()) {
+                Paciente paciente = new Paciente();
+                Medico medico = new Medico();
+                Funcionario funcionario = new Funcionario();
+
+                // Obtendo os atributos "básicos"
+                retorno.setCodConsulta(resultado.getInt("codconsulta"));
+                retorno.setDataConsulta(resultado.getDate("dataconsulta"));
+                retorno.setHoraConsulta(resultado.getTime("horaconsulta"));
+                retorno.setDuracaoConsulta(resultado.getInt("duracaoconsulta"));
+                retorno.setStatusConsulta(resultado.getString("statusconsulta"));
+
+                // Obtendo os códigos do médico, funcionário e paciente
+                medico.setCodMedico(resultado.getInt("medico_codmedico"));
+                funcionario.setCodFuncionario(resultado.getInt("funcionario_codfuncionario"));
+                paciente.setCodPaciente(resultado.getInt("paciente_codpaciente"));
+
+                // Fazendo a conexão com outros DAOs para buscar os objetos medico, funcionario
+                // e paciente
+                medico = medicoDAO.buscar(medico);
+                funcionario = funcionarioDAO.buscar(funcionario);
+                paciente = pacienteDAO.buscar(paciente);
+
+                // Terminando de preencher a Consulta
+                retorno.setMedico(medico);
+                retorno.setPaciente(paciente);
+                retorno.setFuncionario(funcionario);
+            }
+
+        } catch (SQLException e){
+            Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, e);
+        }       
+        return retorno;
+    }
 }
