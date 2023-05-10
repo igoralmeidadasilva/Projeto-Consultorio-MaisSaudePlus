@@ -34,6 +34,7 @@ public class ProcedimentoGastoRelatorioDAO {
 "		pr.nomeprocedimento, SUM(pr.valorprocedimento) AS soma" + 
 "		FROM	procedimento pr, consultarealizada cr " +
 "		WHERE cr.procedimento_codprocedimento = pr.codprocedimento " +
+"		AND cr.procedimento_codprocedimento != 1" +
 "		GROUP BY pr.codprocedimento, pr.nomeprocedimento " +
 "		ORDER BY pr.codprocedimento";
         List<ProcedimentoGastoRelatorio> retorno = new ArrayList<ProcedimentoGastoRelatorio>();
