@@ -6,9 +6,6 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,39 +15,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.funcionario.FXMLVBoxFuncionarioMainController">
+<VBox fx:id="vBoxRoot" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.funcionario.FXMLVBoxFuncionarioMainController">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Cadastros">
-            <items>
-              <MenuItem fx:id="menuItemCadastroDePacientes" mnemonicParsing="false" onAction="#handleButtonCadastrarPaciente" text="Paciente" />
-                  <MenuItem mnemonicParsing="false" text="item" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Processos">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Item" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Gráficos">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Item" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Relátorios">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="item" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Trocar Usúario">
-               <items>
-                  <MenuItem fx:id="menuItemTrocarFuncionario" mnemonicParsing="false" onAction="#handleMenuItemTrocarFuncionario" text="Funcionário" />
-                  <MenuItem fx:id="menuItemTrocarMedico" mnemonicParsing="false" onAction="#handleMenuItemTrocarMedico" text="Médico" />
-               </items>
-            </Menu>
-        </menus>
-      </MenuBar>
+      <Pane prefHeight="37.0" prefWidth="800.0" style="-fx-background-color: #287d3d;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="12.0" layoutY="4.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </ImageView>
+            <Label layoutX="51.0" layoutY="9.0" prefHeight="15.0" prefWidth="137.0" text="Mais Saúde Plus 1.0.0" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="buttonBarMin" layoutX="1129.0" layoutY="6.0" onAction="#handleButtonBarMin" prefHeight="25.0" prefWidth="24.0" text="-" textAlignment="RIGHT" textFill="WHITE" />
+            <JFXButton fx:id="buttonBarClose" layoutX="1162.0" layoutY="6.0" onAction="#handleButtonBarClose" prefHeight="25.0" prefWidth="24.0" text="X" textAlignment="RIGHT" textFill="WHITE" />
+         </children>
+      </Pane>
       <HBox prefHeight="569.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="572.0" prefWidth="275.0" styleClass="background">
@@ -68,7 +56,7 @@
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="buttonListagens" alignment="BASELINE_LEFT" graphicTextGap="18.0" prefHeight="52.0" prefWidth="755.0" styleClass="JFXButtonLateral" text="Listagens">
+                  <JFXButton fx:id="buttonHome" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonHome" prefHeight="52.0" prefWidth="755.0" styleClass="JFXButtonLateral" text="Home">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -78,7 +66,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/clinicalNoteGoogle.png" />
+                              <Image url="@../icons/home_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -176,6 +164,27 @@
                      <padding>
                         <Insets left="22.0" />
                      </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="buttonTrocarUsuario" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonTrocarUsuario" prefHeight="52.0" prefWidth="755.0" styleClass="JFXButtonLateral" text="Trocar Usuário">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/switch_account_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
                   </JFXButton>
                   <JFXButton fx:id="buttonClose" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonClose" prefHeight="52.0" prefWidth="894.0" styleClass="JFXButtonLateral" text="Sair">
                      <font>

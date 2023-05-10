@@ -5,9 +5,6 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,39 +14,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLVBoxMedicoMainController">
+<VBox fx:id="vBoxRoot" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLVBoxMedicoMainController">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Cadastros">
-            <items>
-              <MenuItem mnemonicParsing="false" text="item" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Processos">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Item" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Gráficos">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Item" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Relátorios">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Item" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Trocar Usúario">
-               <items>
-                  <MenuItem fx:id="menuItemTrocarFuncionario" mnemonicParsing="false" onAction="#handleMenuItemTrocarFuncionario" text="Funcionário" />
-                  <MenuItem fx:id="menuItemTrocarMedico" mnemonicParsing="false" onAction="#handleMenuItemTrocarMedico" text="Médico" />
-               </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <HBox prefHeight="376.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <Pane prefHeight="37.0" prefWidth="800.0" style="-fx-background-color: #287d3d;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="12.0" layoutY="4.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <Blend mode="DARKEN" />
+               </effect>
+            </ImageView>
+            <Label layoutX="51.0" layoutY="9.0" prefHeight="15.0" prefWidth="137.0" text="Mais Saúde Plus 1.0.0" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="buttonBarMin" layoutX="1129.0" layoutY="6.0" onAction="#handleButtonBarMin" prefHeight="25.0" prefWidth="24.0" text="-" textAlignment="RIGHT" textFill="WHITE" />
+            <JFXButton fx:id="buttonBarClose" layoutX="1162.0" layoutY="6.0" onAction="#handleButtonBarClose" prefHeight="25.0" prefWidth="24.0" text="X" textAlignment="RIGHT" textFill="WHITE" />
+         </children>
+      </Pane>
+      <HBox prefHeight="569.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="572.0" prefWidth="275.0" styleClass="background">
                <children>
@@ -66,6 +55,27 @@
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="buttonHome" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonHome" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Home">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/home_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <effect>
+                              <Blend mode="DARKEN" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                   <JFXButton fx:id="buttonRealizarConsulta" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleRealizarConsulta" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Realizar Consulta">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -76,7 +86,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@../icons/medical_services_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -87,7 +97,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="buttonConsultaPorMes" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonConsultaPorMes" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Consultas por mês">
+                  <JFXButton fx:id="buttonGraficos" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonGraficos" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Gráficos">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -97,7 +107,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@../icons/pie_chart_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -108,7 +118,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="buttonProcedimentosPorMedico" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonCustoProcedimentoPorMedico" prefHeight="52.0" prefWidth="298.0" styleClass="JFXButtonLateral" text="Proceds. por Médico">
+                  <JFXButton fx:id="buttonRelatorios" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonRelatorios" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Relatórios">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -118,7 +128,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@../icons/clinicalNoteGoogle.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -129,7 +139,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="buttonProcedimentosPorMes" alignment="BASELINE_LEFT" graphicTextGap="18.0" layoutX="10.0" layoutY="289.0" onAction="#handleButtonProcedimentosPorMes" prefHeight="52.0" prefWidth="298.0" styleClass="JFXButtonLateral" text="Proceds. por Mês">
+                  <JFXButton fx:id="buttonTrocarUsuario" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonTrocarUsuario" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Trocar Usuário">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -139,70 +149,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                           <effect>
-                              <Blend mode="DARKEN" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="buttonRelatorioProcedimento" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonRelatorioProcedimento" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Relatório Procedimento">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets left="22.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                           <effect>
-                              <Blend mode="DARKEN" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="buttonRelatorioGastoProcedimento" alignment="BASELINE_LEFT" graphicTextGap="18.0" layoutX="10.0" layoutY="341.0" onAction="#handleButtonRelatorioGastoProcedimento" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Relatório Gastos Proceds.">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets left="22.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                           <effect>
-                              <Blend mode="DARKEN" />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="buttonRelatorioMedico" alignment="BASELINE_LEFT" graphicTextGap="18.0" onAction="#handleButtonRelatorioMedico" prefHeight="52.0" prefWidth="555.0" styleClass="JFXButtonLateral" text="Relatório Médico">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets left="22.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/question_mark_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@../icons/switch_account_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -236,9 +183,9 @@
                   </JFXButton>
                </children>
             </VBox>
-            <AnchorPane fx:id="anchorPaneBase" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+            <AnchorPane fx:id="anchorPaneBase" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
                <children>
-                  <Pane prefHeight="52.0" prefWidth="800.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <ImageView disable="true" fitHeight="281.0" fitWidth="281.0" layoutX="311.0" layoutY="267.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <image>
                         <Image url="@../icons/batimento-cardiaco.png" />

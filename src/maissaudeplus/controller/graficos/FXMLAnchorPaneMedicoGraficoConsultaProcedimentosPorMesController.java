@@ -1,29 +1,30 @@
-package maissaudeplus.controller.medico;
+package maissaudeplus.controller.graficos;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
-import java.sql.Connection;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import maissaudeplus.model.dao.ConsultaDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
+import java.sql.Connection;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
+import maissaudeplus.model.dao.ConsultaRealizadaDAO;
+import maissaudeplus.model.dao.MedicoDAO;
+import maissaudeplus.model.dao.ProcedimentoDAO;
 
-/**
- * FXML Controller class
- *
- */
-public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Initializable {
+
+public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController implements Initializable {
+
     
     @FXML
     private BarChart<String, Integer> barChart;
@@ -42,7 +43,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Ini
     private final Connection connection = database.conectar();
     
     //Lista de DAOs usados neste controller
-    private final ConsultaDAO consultaDAO = new ConsultaDAO();
+    private final ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,8 +56,8 @@ public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Ini
         String[] arrayMeses = {"Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"};
         ObservableList<String> observableListMeses = FXCollections.observableArrayList(Arrays.asList(arrayMeses));
         categoryAxis.setCategories(observableListMeses);
-        consultaDAO.setConnection(connection);
-        Map<Integer, Integer> dados = consultaDAO.listarQuantidadeConsultasPorMes(LocalDate.now().getYear());
+        procedimentoDAO.setConnection(connection);
+        Map<Integer, Integer> dados = procedimentoDAO.listarQuantidadeProcedimentoPorMes(LocalDate.now().getYear());
         XYChart.Series<String, Integer> serie = new XYChart.Series();
         for(Integer chave : dados.keySet()){
             Integer valor = dados.get(chave);
@@ -64,7 +65,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Ini
             XYChart.Data<String, Integer> dado = new XYChart.Data<>(mes, valor);
             serie.getData().add(dado);
         }
-        barChart.setTitle("Consultas X Mês");
+        barChart.setTitle("Procedimento X Mês");
         barChart.getData().add(serie);
     }
     

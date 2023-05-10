@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="500.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneMedicoNotificarPacienteController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneMedicoNotificarPacienteController">
    <children>
       <ImageView disable="true" fitHeight="200.0" fitWidth="200.0" layoutX="349.0" layoutY="149.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <image>

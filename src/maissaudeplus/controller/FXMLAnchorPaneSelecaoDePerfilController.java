@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import maissaudeplus.Main;
+import maissaudeplus.controller.funcionario.FXMLVBoxFuncionarioMainController;
+import maissaudeplus.controller.medico.FXMLVBoxMedicoMainController;
 
 /**
  * FXML Controller class
@@ -32,24 +36,24 @@ public class FXMLAnchorPaneSelecaoDePerfilController implements Initializable {
     }   
     
     @FXML
-    private void handleButtonLoadFuncionarios() throws IOException {
-        //Este método carrega a tela do fúncionario
-        //Método estático da classe Main que troca o fxml carregado pelo VBox principal do perfil funcionario.
-        Main.setRoot("/maissaudeplus/view/funcionario/FXMLVBoxFuncionarioMain.fxml");
-        //Método estático da classe Main que que permite redimensionalizar o programa.
-        Main.setResizableTrue();
-        //Este método tem a única função de aumentar um pouco a janela funcionarios assim que é aberta.
-        Main.setPrimarySize();     
+    private void handleButtonLoadFuncionarios() throws IOException { 
+        //Este método carrega a tela do funcionario
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/maissaudeplus/view/funcionario/FXMLVBoxFuncionarioMain.fxml"));
+        VBox vbox = (VBox) loader.load();
+        FXMLVBoxFuncionarioMainController controller = loader.getController();
+        anchorPaneBase.getChildren().setAll(vbox);
+        //Este método tem a única função de aumentar um pouco a janela médico assim que é aberta.
+        Main.setPrimarySize();
     }
     
     @FXML
     private void handleButtonLoadMedico() throws IOException {
         //Este método carrega a tela do médico
-        //Método estático da classe Main que troca o fxml carregado pelo VBox principal do perfil médico.
-        Main.setRoot("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml");
-        //Método estático da classe Main que que permite redimensionalizar o programa.
-        Main.setResizableTrue();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml"));
+        VBox vbox = (VBox) loader.load();
+        FXMLVBoxMedicoMainController controller = loader.getController();
+        anchorPaneBase.getChildren().setAll(vbox);
         //Este método tem a única função de aumentar um pouco a janela médico assim que é aberta.
-        Main.setPrimarySize();  
+        Main.setPrimarySize();
     } 
 }

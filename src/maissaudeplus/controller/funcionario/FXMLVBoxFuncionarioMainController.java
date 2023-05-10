@@ -4,13 +4,16 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import maissaudeplus.Main;
+import maissaudeplus.controller.medico.FXMLVBoxMedicoMainController;
 
 /**
  * FXML Controller class
@@ -18,13 +21,17 @@ import maissaudeplus.Main;
  */
 public class FXMLVBoxFuncionarioMainController implements Initializable {
     
-    //MenuItem que chama o perfil do funcionário
     @FXML
-    private MenuItem menuItemTrocarFuncionario;
+    private VBox vBoxRoot;
+    
+    @FXML
+    private JFXButton buttonBarMin;
 
-    //MenuItem que chama o perfil do médico
     @FXML
-    private MenuItem menuItemTrocarMedico;
+    private JFXButton buttonBarClose;
+      
+    @FXML
+    private JFXButton buttonHome;
     
     //Botão que carrega a tela de agendamentos
     @FXML
@@ -39,6 +46,9 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     @FXML
     private JFXButton buttonCadastrarProcedimento;
     
+    @FXML
+    private JFXButton buttonTrocarUsuario;
+    
     //Botão que fecha o programa
     @FXML
     private JFXButton buttonClose;
@@ -48,6 +58,7 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     private AnchorPane anchorPaneBase;
     
     //Os Anchor Pane abaixo são elementos que serão carregados a partir de outro arquivo .fxml
+    private AnchorPane anchorPaneHome;
     private AnchorPane anchorPaneAgendarConsulta;
     private AnchorPane anchorPaneCadastrarPaciente;
     private AnchorPane anchorPaneCadastrarMedico;
@@ -55,21 +66,39 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            handleButtonHome();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLVBoxFuncionarioMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void handleButtonBarClose() {
+        Stage stage = (Stage) buttonBarClose.getScene().getWindow(); 
+        stage.close(); 
     }
 
     @FXML
-    void handleMenuItemTrocarFuncionario() throws IOException {
-        //Este método carrega a tela do fúncionario
-        //Método estático da classe Main que troca o fxml carregado pelo VBox principal do perfil funcionario.
-        Main.setRoot("/maissaudeplus/view/funcionario/FXMLVBoxFuncionarioMain.fxml");
+    void handleButtonBarMin() {
+        Stage stage = (Stage) buttonBarMin.getScene().getWindow();
+        stage.setIconified(true);
     }
-
+       
     @FXML
-    void handleMenuItemTrocarMedico() throws IOException {
-        //Este método carrega a tela do médico
-        //Método estático da classe Main que troca o fxml carregado pelo VBox principal do perfil médico.
-        Main.setRoot("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml");
+    void handleButtonHome() throws IOException {
+        //Método de configuração do botão que troca o anchor pane base pelo anchor pane de cadastro de pacietne.
+        //Este método carrega a o Anchor Pane responsavel pelo cadastro de paciente.
+        if(anchorPaneHome == null){
+            anchorPaneHome = (AnchorPane) FXMLLoader.load(getClass().getResource("/maissaudeplus/view/FXMLAnchorPaneHome.fxml"));
+        }
+        //Os métodos abaixo configurão as restrições do anchor pane para que ele possa ser redimensionado
+        AnchorPane.setTopAnchor(anchorPaneHome, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneHome,0.0 );
+        AnchorPane.setLeftAnchor(anchorPaneHome, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneHome, 0.0);
+        //Método que carrega o anchorPaneCadastroPacietne no anchorPaneBase
+        anchorPaneBase.getChildren().setAll(anchorPaneHome);
     }
     
     @FXML
@@ -137,6 +166,15 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     }
     
     @FXML
+    void handleButtonTrocarUsuario() throws IOException {
+        //Main.setRoot("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml"));
+        VBox vbox = (VBox) loader.load();
+        FXMLVBoxMedicoMainController controller = loader.getController();
+        vBoxRoot.getChildren().setAll(vbox);
+    }
+    
+    @FXML
     public void handleButtonClose(){
         //Este botão fecha o programa
         //Obtendo a janela atual
@@ -144,5 +182,4 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
         //Fechando o Stage
         stage.close(); 
     }
-
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPaneBase" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maissaudeplus.controller.medico.FXMLAnchorPaneGraficosController">
+   <children>
+      <ImageView disable="true" fitHeight="281.0" fitWidth="281.0" layoutX="348.0" layoutY="89.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <image>
+            <Image url="@../icons/batimento-cardiaco.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Pane layoutX="47.0" layoutY="38.0" prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Group layoutX="180.0" layoutY="209.0">
+         <children>
+            <JFXButton fx:id="buttonGraficoProcedimentoMes" contentDisplay="TOP" onAction="#handleButtonGraficoProcedimentoMes" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Mês" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bar_chart_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="buttonGraficoConsultaMes" contentDisplay="TOP" layoutX="454.0" onAction="#handleButtonGraficoConsultaMes" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Consulta X Mês" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bar_chart_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="buttonGraficoProcedimentoMedico" contentDisplay="TOP" layoutX="227.0" onAction="#handleButtonGraficoProcedimentoMedico" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Médico" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bar_chart_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </Group>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="285.0" layoutY="102.0" prefHeight="27.0" prefWidth="231.0" text="Gráficos Mais Saúde Plus" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="102.0">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

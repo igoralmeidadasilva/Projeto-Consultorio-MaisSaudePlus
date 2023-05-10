@@ -1,4 +1,4 @@
-package maissaudeplus.controller.medico;
+package maissaudeplus.controller.graficos;
 
 import com.jfoenix.controls.JFXButton;
 
