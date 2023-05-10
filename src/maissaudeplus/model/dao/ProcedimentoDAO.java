@@ -140,6 +140,7 @@ public class ProcedimentoDAO {
         String sql = "SELECT COUNT (cr.procedimento_codprocedimento) AS qtde, EXTRACT (MONTH FROM co.dataconsulta) AS mes " +
                         "from consultarealizada cr, consulta co " +
                         "WHERE cr.consulta_codconsulta = co.codconsulta " +
+                        "AND cr.procedimento_codprocedimento != 1 " +
                         "GROUP BY mes ORDER BY mes ASC";
         Map<Integer, Integer> retorno = new HashMap();
         try {
