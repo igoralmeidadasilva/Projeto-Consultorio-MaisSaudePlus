@@ -32,7 +32,8 @@ public class ProcedimentoRelatorioDAO {
 		"FROM	consultaRealizada cr, " +
 		"procedimento p " +
 		"WHERE cr.procedimento_codprocedimento = p.codprocedimento " +
-		"GROUP BY p.codprocedimento, p.nomeprocedimento " +
+		"AND cr.procedimento_codprocedimento != 1 " +
+                "GROUP BY p.codprocedimento, p.nomeprocedimento " +
 		"ORDER BY p.codprocedimento";
         List<ProcedimentoRelatorio> retorno = new ArrayList<ProcedimentoRelatorio>();
         try{
