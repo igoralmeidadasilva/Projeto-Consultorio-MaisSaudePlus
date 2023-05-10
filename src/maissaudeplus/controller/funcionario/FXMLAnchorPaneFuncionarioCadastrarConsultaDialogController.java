@@ -90,9 +90,6 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
 
     @FXML
     private SearchableComboBox<LocalTime> comboBoxConsultaHora;
-
-    @FXML
-    private SearchableComboBox<String> comboBoxConsultaStatus;
     
     //Lista de horarios disponiveis
     List<LocalTime> listHorarios = new ArrayList();
@@ -120,7 +117,6 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     public void initialize(URL url, ResourceBundle rb) {  
         //Carregando informações nos componentes visuais
         loadTableView();    
-        loadComboBoxStatus();
         loadComboBoxMedico();
         loadComboBoxFuncionario();
         loadComboBoxDuracao();
@@ -156,11 +152,6 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
         }
     }
     
-    private void loadComboBoxStatus(){
-        ObservableList<String> lista = FXCollections.observableArrayList("Cancelada", "Realizada", "Agendada");
-        comboBoxConsultaStatus.setItems(lista);
-    }
-    
     private void loadComboBoxMedico(){
         medicoDAO.setConnection(connection);
         ObservableList<Medico> lista = FXCollections.observableArrayList(medicoDAO.listar());
@@ -181,15 +172,6 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
     private void loadComboBoxHora(){
         ObservableList<LocalTime> lista = FXCollections.observableArrayList(listHorarios);
         comboBoxConsultaHora.setItems(lista);
-    }
-    
-    //Por motivos de padronização do projeto, foi preciso criar labels auxiliares para excrever os "Prompt text's" uma vez que a classe Searchable ComboBox não
-    //apresenta tal recurso, os métodos abaixo tem como objetivo replicar visualmente o efeito desta opção
-    @FXML
-    private void handleComboBoxStatus(){
-        if(comboBoxConsultaStatus.getValue() != null){
-            labelPromptStatus.setText("");
-        }
     }
     
     //Este método em especial ajuda no controle dos hórarios chamando o metodo "filtroHorario"
@@ -247,7 +229,7 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
             consulta.setDataConsulta(datePickerConsultaData.getValue());
             consulta.setHoraConsulta(comboBoxConsultaHora.getValue());
             consulta.setDuracaoConsulta(comboBoxConsultaDuracao.getValue());
-            consulta.setStatusConsulta(comboBoxConsultaStatus.getValue());
+            consulta.setStatusConsulta("Agendada");
             //Retorna verdadeiro sinalizando que o botão "Confirmar" foi pressionado
             buttonConfirmarClicked = true;
             //Invocando o método referente a atualizar o contador de consultas
@@ -371,10 +353,6 @@ public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implemen
         
         if (comboBoxConsultaDuracao.getSelectionModel().getSelectedItem() == null){
             errorMessage += "Duração inválida!\n";
-        }
-               
-        if (comboBoxConsultaStatus.getSelectionModel().getSelectedItem() == null){
-            errorMessage += "Status inválido!\n";
         }
         
         if (errorMessage.length() == 0){
