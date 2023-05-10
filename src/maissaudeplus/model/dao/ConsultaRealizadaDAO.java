@@ -59,13 +59,13 @@ public class ConsultaRealizadaDAO {
     }
     
     public Map<String,Double> gastoPorProcedimentoSolicitado(){
-        String sql = "SELECT e.nomemedico," +
-                    "COUNT(cr.codconsultarealizada), SUM(pr.valorprocedimento)" +
-                    "FROM consultaRealizada cr" +
-                        "LEFT JOIN	consulta co		ON	cr.codconsultarealizada			=	co.codconsulta" +
-                        "LEFT JOIN	medico me		ON	co.medico_codmedico				=	me.codmedico" +
-                        "LEFT JOIN	procedimento pr	ON	cr.procedimento_codprocedimento	=	pr.codprocedimento" +
-                    "GROUP BY me.nomemedico";
+        String sql = "SELECT me.nomemedico, " +
+                    "SUM(pr.valorprocedimento) AS total " +
+                    "FROM consultaRealizada cr " +
+                        "LEFT JOIN	consulta co		ON	cr.codconsultarealizada			=	co.codconsulta " +
+                        "LEFT JOIN	medico me		ON	co.medico_codmedico				=	me.codmedico " +
+                        "LEFT JOIN	procedimento pr	ON	cr.procedimento_codprocedimento	=	pr.codprocedimento " +
+                    "GROUP BY me.nomemedico ";
         Map<String,Double> retorno = new HashMap();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
