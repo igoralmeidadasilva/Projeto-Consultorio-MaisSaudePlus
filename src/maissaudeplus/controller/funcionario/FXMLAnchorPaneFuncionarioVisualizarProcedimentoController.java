@@ -6,6 +6,7 @@
 package maissaudeplus.controller.funcionario;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -45,7 +46,7 @@ public class FXMLAnchorPaneFuncionarioVisualizarProcedimentoController implement
     @FXML
     private Label labelProcedimentoValor;
     @FXML
-    private Label labelProcedimentoDescricao;
+    private JFXTextArea textAreaDescricaoProcedimento;
     @FXML
     private Label labelProcedimentoNome;
     @FXML
@@ -95,7 +96,7 @@ public class FXMLAnchorPaneFuncionarioVisualizarProcedimentoController implement
     private void selecionarItemsTableViewProcedimento(Procedimento procedimento){
         if(procedimento != null){
             labelProcedimentoNome.setText(procedimento.getNomeProcedimento());
-            labelProcedimentoDescricao.setText(procedimento.getDescProcedimento());;
+            textAreaDescricaoProcedimento.setText(procedimento.getDescProcedimento());;
             labelProcedimentoValor.setText(Double.toString(procedimento.getValorProcedimento()));
             if (procedimento.isFlagObesidade() == true){
                 labelProcediimentoRespostaObesidade.setText("Sim");
@@ -104,7 +105,7 @@ public class FXMLAnchorPaneFuncionarioVisualizarProcedimentoController implement
             }
         } else {
             labelProcedimentoNome.setText("");
-            labelProcedimentoDescricao.setText("");
+            textAreaDescricaoProcedimento.setText("");
             labelProcedimentoValor.setText("");
             labelProcediimentoRespostaObesidade.setText("");
         }

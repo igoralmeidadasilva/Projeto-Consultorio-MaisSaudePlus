@@ -6,6 +6,7 @@
 package maissaudeplus.controller.funcionario;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +31,7 @@ public class FXMLAnchorPaneFuncionarioCadastrarProcedimentoDialogController impl
     @FXML
     private CheckBox checkBoxProcedimento;
     @FXML
-    private JFXTextField textFieldDescricaoProcedimento;
+    private JFXTextArea textAreaDescricaoProcedimento;
     @FXML
     private JFXButton buttonConfirmarCadastroProcedimento;
     @FXML
@@ -56,7 +57,7 @@ public class FXMLAnchorPaneFuncionarioCadastrarProcedimentoDialogController impl
         if(validarEntradaDeDados()){
             //Colocando os dados fornecidos na instância do paciente
             procedimento.setNomeProcedimento(textFieldNomeProcedimento.getText().toUpperCase());
-            procedimento.setDescProcedimento(textFieldDescricaoProcedimento.getText().toUpperCase());
+            procedimento.setDescProcedimento(textAreaDescricaoProcedimento.getText().toUpperCase());
             procedimento.setValorProcedimento(Double.parseDouble(textFieldValorProcedimento.getText()));
             procedimento.setFlagObesidade(checkBoxProcedimento.isSelected());
             //Retorna verdadeiro sinalizando que o botão "Confirmar" foi pressionado
@@ -102,7 +103,7 @@ public class FXMLAnchorPaneFuncionarioCadastrarProcedimentoDialogController impl
         if (textFieldNomeProcedimento.getText().length() == 0 || textFieldNomeProcedimento == null){
             errorMessage += "Campo \"Nome\" inválido!\n";
         }
-        if (textFieldDescricaoProcedimento.getText().length() == 0 || textFieldDescricaoProcedimento == null){
+        if (textAreaDescricaoProcedimento.getText().length() == 0 || textAreaDescricaoProcedimento == null){
             errorMessage += "Campo \"Nome\" inválido!\n";
         }       
         //If para válidar se o campo Peso não esta vazio e não contém letras

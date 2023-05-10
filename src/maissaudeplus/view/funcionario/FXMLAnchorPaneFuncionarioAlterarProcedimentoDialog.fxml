@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
@@ -63,7 +64,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </CheckBox>
-            <JFXTextField fx:id="textFieldDescricaoProcedimento" prefHeight="104.0" prefWidth="284.0" promptText="Descreva o procedimento..." unFocusColor="BLACK" GridPane.rowIndex="3" />
+            <JFXTextArea fx:id="textAreaDescricaoProcedimento" GridPane.rowIndex="3" />
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />

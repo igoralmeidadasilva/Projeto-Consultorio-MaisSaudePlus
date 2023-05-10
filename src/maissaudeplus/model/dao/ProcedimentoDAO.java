@@ -33,7 +33,8 @@ public class ProcedimentoDAO {
     }
     
     public List<Procedimento> listar(){
-    String sql = "SELECT * FROM Procedimento";
+    String sql = "SELECT * FROM Procedimento "
+               + "WHERE codprocedimento != 1";
     List<Procedimento> retorno = new ArrayList<Procedimento>();
     try{
         PreparedStatement stmt = connection.prepareStatement(sql);
