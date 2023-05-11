@@ -1,5 +1,7 @@
 // classe que tem a especificção dos dados que pertencem a uma notificacao
 // classe que tem os métodos get e set da notificacao
+// Raphael Pavani Manhães Bersot - 20211si017
+
 package maissaudeplus.model.domain;
 
 import java.time.LocalDate;

@@ -1,4 +1,6 @@
 // classe que tem a especificção dos dados que pertencem a ao relatório gasto por procedimeto
+// Raphael Pavani Manhães Bersot - 20211si017
+
 package maissaudeplus.model.domain;
 
 

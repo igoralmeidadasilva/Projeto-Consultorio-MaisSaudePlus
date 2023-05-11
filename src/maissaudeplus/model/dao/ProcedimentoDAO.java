@@ -1,4 +1,5 @@
 // Classe onde tem os métodos para manipulação da tabela procedimento no banco
+// Raphael Pavani Manhães Bersot - 20211si017
 package maissaudeplus.model.dao;
 
 import java.sql.Connection;
@@ -28,7 +29,31 @@ public class ProcedimentoDAO {
     
     public List<Procedimento> listar(){
     String sql = "SELECT * FROM Procedimento "
-               + "WHERE codprocedimento != 1";
+                + "WHERE codprocedimento != 1";
+    List<Procedimento> retorno = new ArrayList<Procedimento>();
+    try{
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        ResultSet resultado = stmt.executeQuery();
+        while(resultado.next()){
+            Procedimento procedimento = new Procedimento();
+
+            //Obtendo os atributos "básicos"
+            procedimento.setCodProcedimento(resultado.getInt("codprocedimento"));
+            procedimento.setNomeProcedimento(resultado.getString("nomeProcedimento"));
+            procedimento.setDescProcedimento(resultado.getString("descProcedimento"));
+            procedimento.setValorProcedimento(resultado.getDouble("valorProcedimento"));
+            procedimento.setFlagObesidade(resultado.getBoolean("flagObesidade"));
+            //Adicionando a Lista de retorno
+            retorno.add(procedimento); 
+            }
+        } catch (SQLException e){
+            Logger.getLogger(Procedimento.class.getName()).log(Level.SEVERE, null, e);
+        }    
+        return retorno;
+    }
+    
+    public List<Procedimento> listarComOpcaoNaHaProcedimento(){
+    String sql = "SELECT * FROM Procedimento ";
     List<Procedimento> retorno = new ArrayList<Procedimento>();
     try{
         PreparedStatement stmt = connection.prepareStatement(sql);

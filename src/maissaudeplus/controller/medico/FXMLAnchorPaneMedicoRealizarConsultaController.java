@@ -97,7 +97,7 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     private void loadComboBoxProcedimento() {
         procedimentoDAO.setConnection(connection);
-        ObservableList<Procedimento> lista = FXCollections.observableArrayList(procedimentoDAO.listar());
+        ObservableList<Procedimento> lista = FXCollections.observableArrayList(procedimentoDAO.listarComOpcaoNaHaProcedimento());
         comboBoxSelecionarProcedimento.setItems(lista);
     }
 

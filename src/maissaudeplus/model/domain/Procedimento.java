@@ -1,5 +1,7 @@
 // classe que tem a especificção dos dados que pertencem a um procedimento
 // classe que tem os métodos get e set do procedimento
+// Raphael Pavani Manhães Bersot - 20211si017
+
 package maissaudeplus.model.domain;
 
 public class Procedimento {
