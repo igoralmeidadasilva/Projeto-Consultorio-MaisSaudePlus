@@ -62,10 +62,6 @@ public class FXMLAnchorPaneFuncionarioVisualizarMedicoController implements Init
     @FXML
     private JFXButton buttonMedicoRemover;
 
-    private Stage dialogStage;
-
-    private Medico medico;
-
     //ObservableList para preencher a tableview
     private ObservableList<Medico> listaMedico;
 
@@ -206,5 +202,4 @@ public class FXMLAnchorPaneFuncionarioVisualizarMedicoController implements Init
         dialogStage.showAndWait();
         return controller.isButtonConfirmarClicked();
     }
-
 }

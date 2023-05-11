@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -15,16 +14,11 @@ import maissaudeplus.model.dao.ConsultaRealizadaDAO;
 import maissaudeplus.model.dao.MedicoDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
-import maissaudeplus.model.domain.ConsultaRealizada;
-import maissaudeplus.model.domain.Medico;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import org.apache.poi.hssf.util.HSSFColor.PINK;
 
 public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController implements Initializable{
 
@@ -60,7 +54,7 @@ public class FXMLAnchorPaneMedicoGraficoCustoProcedimentoPorMedicoController imp
         ObservableList<String> observableListMedicos = FXCollections.observableArrayList(arrayMedicos);
         categoryAxis.setCategories(observableListMedicos);
         Map<String,Double> dataset = consultaRealizadaDAO.gastoPorProcedimentoSolicitado();
-        XYChart.Series<String, Double> serie = new XYChart.Series();
+        XYChart.Series<String, Double> serie = new XYChart.Series<>();
         for(String nome : dataset.keySet()){
             Double total = dataset.get(nome);          
             XYChart.Data<String, Double> dado = new XYChart.Data<>(nome, total);

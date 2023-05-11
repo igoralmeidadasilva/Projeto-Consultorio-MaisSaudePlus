@@ -12,8 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import maissaudeplus.Main;
-import maissaudeplus.controller.medico.FXMLVBoxMedicoMainController;
 
 /**
  * FXML Controller class
@@ -167,10 +165,8 @@ public class FXMLVBoxFuncionarioMainController implements Initializable {
     
     @FXML
     void handleButtonTrocarUsuario() throws IOException {
-        //Main.setRoot("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maissaudeplus/view/medico/FXMLVBoxMedicoMain.fxml"));
         VBox vbox = (VBox) loader.load();
-        FXMLVBoxMedicoMainController controller = loader.getController();
         vBoxRoot.getChildren().setAll(vbox);
     }
     

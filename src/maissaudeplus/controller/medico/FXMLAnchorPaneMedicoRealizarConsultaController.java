@@ -18,22 +18,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
-//import javafimport javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import maissaudeplus.controller.funcionario.FXMLAnchorPaneFuncionarioCadastrarPacienteDialogController;
-//x.scene.layout.AnchorPane;
 import maissaudeplus.model.dao.ConsultaDAO;
 import maissaudeplus.model.dao.ConsultaRealizadaDAO;
 import maissaudeplus.model.dao.MedicamentoDAO;
-import maissaudeplus.model.dao.PacienteDAO;
 import maissaudeplus.model.dao.ProcedimentoDAO;
 import maissaudeplus.model.database.Database;
 import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Consulta;
 import maissaudeplus.model.domain.ConsultaRealizada;
 import maissaudeplus.model.domain.Medicamento;
-import maissaudeplus.model.domain.Medico;
 import maissaudeplus.model.domain.Paciente;
 import maissaudeplus.model.domain.Procedimento;
 
@@ -207,7 +202,6 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
     public boolean testeDeObesidade(Paciente paciente){
         int count = 0;
         consultaRealizadaDAO.setConnection(connection);
-        LocalDate dataHoje = LocalDate.now();
         LocalDate dataLimite = LocalDate.now().minusYears(1).minusMonths(6);
         List <ConsultaRealizada> listar = consultaRealizadaDAO.listarPorPaciente(paciente);
         for(ConsultaRealizada item : listar){

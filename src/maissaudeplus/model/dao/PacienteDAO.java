@@ -24,7 +24,7 @@ public class PacienteDAO {
     
     public List<Paciente> listar(){
         String sql = "SELECT * FROM paciente ORDER BY codpaciente ASC";
-        List<Paciente> retorno = new ArrayList();
+        List<Paciente> retorno = new ArrayList<>();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();

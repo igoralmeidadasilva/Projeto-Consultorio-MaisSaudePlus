@@ -42,7 +42,6 @@ public class ConsultaRealizadaDAO {
 
     public boolean buscarConsultaRealizada(ConsultaRealizada consultaRealizada) {
         String sql = "SELECT * FROM consultarealizada WHERE consulta_codconsulta=?";
-        List<ConsultaRealizada> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, consultaRealizada.getConsulta().getCodConsulta());
@@ -66,7 +65,7 @@ public class ConsultaRealizadaDAO {
                         "LEFT JOIN	medico me		ON	co.medico_codmedico				=	me.codmedico " +
                         "LEFT JOIN	procedimento pr	ON	cr.procedimento_codprocedimento	=	pr.codprocedimento " +
                     "GROUP BY me.nomemedico ";
-        Map<String,Double> retorno = new HashMap();
+        Map<String,Double> retorno = new HashMap<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -79,10 +78,7 @@ public class ConsultaRealizadaDAO {
         return retorno;
     
     }
-    
-    //#########################################################################################################
-    // implementar o método listar por paciente (será usuado para carregar o paciente em minha tela
-    // listatPaciente();
+
     public List<ConsultaRealizada> listarPorPaciente (Paciente paciente){
         String sql = "SELECT codconsultarealizada, consulta_codconsulta, procedimento_codprocedimento, medicamento_codmedicamento " +
                         "FROM	consultarealizada cr, " +
@@ -90,7 +86,7 @@ public class ConsultaRealizadaDAO {
                         "WHERE cr.consulta_codconsulta = co.codconsulta " +
                         "AND co.paciente_codpaciente = ?";
         
-        List<ConsultaRealizada> retorno = new ArrayList();
+        List<ConsultaRealizada> retorno = new ArrayList<>();
         
         
         ConsultaDAO consultaDAO = new ConsultaDAO();

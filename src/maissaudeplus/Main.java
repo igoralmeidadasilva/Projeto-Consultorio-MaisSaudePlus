@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         root = FXMLLoader.load(getClass().getResource("view/FXMLAnchorPaneSelecaoDePerfil.fxml")); 
-        scene = new Scene(root, 900, 490 );
+        scene = new Scene(root, 900, 500 );
         
         stage.setTitle("Mais Saúde Plus");
         stage.setScene(scene);

@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maissaudeplus.model.domain.Procedimento;
 
 public class ProcedimentoDAO {
@@ -140,7 +137,7 @@ public class ProcedimentoDAO {
                         "WHERE cr.consulta_codconsulta = co.codconsulta " +
                         "AND cr.procedimento_codprocedimento != 1 " +
                         "GROUP BY mes ORDER BY mes ASC";
-        Map<Integer, Integer> retorno = new HashMap();
+        Map<Integer, Integer> retorno = new HashMap<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             //stmt.setInt(1, ano);
@@ -167,7 +164,7 @@ public class ProcedimentoDAO {
 		"WHERE cr.procedimento_codprocedimento = p.codprocedimento " +
 		"GROUP BY p.codprocedimento, p.nomeprocedimento " +
 		"ORDER BY p.codprocedimento";
-        Map<Procedimento, Integer> retorno = new HashMap();  
+        Map<Procedimento, Integer> retorno = new HashMap<>();  
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();

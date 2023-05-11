@@ -24,7 +24,7 @@ public class MedicamentoDAO {
     
     public List<Medicamento> listar(){
         String sql = "SELECT * FROM medicamento";
-        List<Medicamento> retorno = new ArrayList();
+        List<Medicamento> retorno = new ArrayList<>();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();

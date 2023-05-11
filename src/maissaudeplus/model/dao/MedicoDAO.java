@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import maissaudeplus.model.domain.Medico;
-import maissaudeplus.model.domain.MedicoRelatorio;
 
 public class MedicoDAO {
 
@@ -25,7 +24,7 @@ public class MedicoDAO {
 
     public List<Medico> listar() {
         String sql = "SELECT * FROM medico";
-        List<Medico> retorno = new ArrayList();
+        List<Medico> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -48,7 +47,7 @@ public class MedicoDAO {
 
     public List<String> listarMedicoPorNome() {
         String sql = "SELECT nomemedico FROM medico";
-        List<String> retorno = new ArrayList();
+        List<String> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -134,5 +133,4 @@ public class MedicoDAO {
         }        
         return retorno;
     }
-
 }

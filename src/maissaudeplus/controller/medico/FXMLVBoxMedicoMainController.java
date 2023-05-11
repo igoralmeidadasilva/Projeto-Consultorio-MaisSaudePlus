@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import maissaudeplus.Main;
 import maissaudeplus.controller.funcionario.FXMLVBoxFuncionarioMainController;
 
 public class FXMLVBoxMedicoMainController implements Initializable {
@@ -51,7 +50,6 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     private AnchorPane anchorPaneRealizarConsulta;
     private AnchorPane anchorPaneGraficos;
     private AnchorPane anchorPaneRelatorios;
-    private AnchorPane AnchorPaneMedicoNotificarPaciente;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -124,11 +122,9 @@ public class FXMLVBoxMedicoMainController implements Initializable {
     
     @FXML
     void handleButtonTrocarUsuario() throws IOException{
-        //Main.setRoot("/maissaudeplus/view/funcionario/FXMLVBoxFuncionarioMain.fxml");
         //Este método carrega a tela do funcionario
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/maissaudeplus/view/funcionario/FXMLVBoxFuncionarioMain.fxml"));
         VBox vbox = (VBox) loader.load();
-        FXMLVBoxFuncionarioMainController controller = loader.getController();
         vBoxRoot.getChildren().setAll(vbox);
     }
     

@@ -57,7 +57,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Ini
         categoryAxis.setCategories(observableListMeses);
         consultaDAO.setConnection(connection);
         Map<Integer, Integer> dados = consultaDAO.listarQuantidadeConsultasPorMes(LocalDate.now().getYear());
-        XYChart.Series<String, Integer> serie = new XYChart.Series();
+        XYChart.Series<String, Integer> serie = new XYChart.Series<>();
         for(Integer chave : dados.keySet()){
             Integer valor = dados.get(chave);
             String mes = retornaNomeMes(chave);           

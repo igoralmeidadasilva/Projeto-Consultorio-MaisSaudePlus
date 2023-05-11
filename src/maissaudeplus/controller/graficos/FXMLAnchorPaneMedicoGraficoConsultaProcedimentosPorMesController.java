@@ -15,13 +15,10 @@ import maissaudeplus.model.database.DatabaseFactory;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
-import maissaudeplus.model.dao.ConsultaRealizadaDAO;
-import maissaudeplus.model.dao.MedicoDAO;
 import maissaudeplus.model.dao.ProcedimentoDAO;
 
 
@@ -60,7 +57,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController im
         categoryAxis.setCategories(observableListMeses);
         procedimentoDAO.setConnection(connection);
         Map<Integer, Integer> dados = procedimentoDAO.listarQuantidadeProcedimentoPorMes(LocalDate.now().getYear());
-        XYChart.Series<String, Integer> serie = new XYChart.Series();
+        XYChart.Series<String, Integer> serie = new XYChart.Series<>();
         for(Integer chave : dados.keySet()){
             Integer valor = dados.get(chave);
             String mes = retornaNomeMes(chave);           

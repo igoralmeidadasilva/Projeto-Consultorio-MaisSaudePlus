@@ -23,7 +23,7 @@ public class FuncionarioDAO {
     
     public List<Funcionario> listar(){
         String sql = "SELECT * FROM Funcionario";
-        List<Funcionario> retorno = new ArrayList();
+        List<Funcionario> retorno = new ArrayList<>();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();

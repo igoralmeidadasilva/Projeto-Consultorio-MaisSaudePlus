@@ -56,7 +56,7 @@ public class FXMLAnchorPaneFuncionarioAlterarConsultaDialogController implements
     private SearchableComboBox<String> comboBoxConsultaStatus;
     
     //Lista de horarios disponiveis
-    List<LocalTime> listHorarios = new ArrayList();
+    List<LocalTime> listHorarios = new ArrayList<>();
     List<LocalTime> listHorariosFiltrado;
     
     //Estabelecer conexão com o banco de dados postgres
@@ -188,7 +188,7 @@ public class FXMLAnchorPaneFuncionarioAlterarConsultaDialogController implements
     // Primeiro Processo de négocio
     private void loadHorarioFiltro(){
         //Carrega uma segunda lista, com o obejtivo de filtra-lá para preservar a lista original
-        listHorariosFiltrado = new ArrayList();
+        listHorariosFiltrado = new ArrayList<>();
         for (LocalTime hora : listHorarios){
             listHorariosFiltrado.add(hora);
         }
@@ -207,7 +207,7 @@ public class FXMLAnchorPaneFuncionarioAlterarConsultaDialogController implements
         //Consulta no Banco
         List<Consulta> lista = consultaDAO.listarPorMedico(medico, data);
         //Instanciando uma lista auxiliar
-        List<LocalTime> listaRemover = new ArrayList();
+        List<LocalTime> listaRemover = new ArrayList<>();
         
         //Percorrendo a lista do banco de dados e preenchendo os valores que serão excluidos, note que a primeira "lista" é do tipo Consulta enquanto esta segunda
         //é do tipo LocalTime

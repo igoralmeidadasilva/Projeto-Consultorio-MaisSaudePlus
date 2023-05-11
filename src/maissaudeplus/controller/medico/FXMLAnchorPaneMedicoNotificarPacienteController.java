@@ -3,8 +3,6 @@
 package maissaudeplus.controller.medico;
 
 import com.jfoenix.controls.JFXButton;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -17,7 +15,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import maissaudeplus.model.domain.Paciente;
-import org.codehaus.groovy.control.messages.Message;
 import java.util.*;
 import javax.mail.Address;
 import maissaudeplus.model.dao.NotificacaoDAO;

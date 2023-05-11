@@ -1,6 +1,5 @@
 package maissaudeplus.model.dao;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -211,7 +210,7 @@ public class ConsultaDAO {
     }
 
     public List<Consulta> listarPorMedico(Medico m, LocalDate data) {
-        List<Consulta> retorno = new ArrayList();
+        List<Consulta> retorno = new ArrayList<>();
         String sql = "SELECT * FROM Consulta WHERE medico_codmedico = ? AND dataconsulta = ?";
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         funcionarioDAO.setConnection(connection);
@@ -265,7 +264,7 @@ public class ConsultaDAO {
     public Map<Integer, Integer> listarQuantidadeConsultasPorMes(int ano) {
         String sql = "SELECT COUNT(codconsulta) AS qtde, EXTRACT (MONTH FROM dataconsulta) AS mes FROM consulta "
                 + "WHERE EXTRACT (YEAR FROM dataconsulta)=? GROUP BY mes ORDER BY mes;";
-        Map<Integer, Integer> retorno = new HashMap();
+        Map<Integer, Integer> retorno = new HashMap<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, ano);

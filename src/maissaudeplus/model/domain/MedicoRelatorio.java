@@ -1,7 +1,5 @@
 package maissaudeplus.model.domain;
 
-import java.time.LocalDate;
-
 public class MedicoRelatorio extends Medico{
     private Integer total;
     private String nome;
