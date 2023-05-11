@@ -23,15 +23,6 @@
       <Pane layoutX="47.0" layoutY="38.0" prefHeight="52.0" prefWidth="417.0" style="-fx-background-color: #489c5d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Group layoutX="180.0" layoutY="209.0">
          <children>
-            <JFXButton fx:id="buttonGraficoProcedimentoMes" contentDisplay="TOP" onAction="#handleButtonGraficoProcedimentoMes" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Mês" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/bar_chart_FILL0_wght400_GRAD0_opsz48.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="buttonGraficoConsultaMes" contentDisplay="TOP" layoutX="454.0" onAction="#handleButtonGraficoConsultaMes" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Consulta X Mês" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -41,7 +32,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonGraficoProcedimentoMedico" contentDisplay="TOP" layoutX="227.0" onAction="#handleButtonGraficoProcedimentoMedico" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Médico" textFill="WHITE">
+            <JFXButton fx:id="buttonGraficoProcedimentoMes" contentDisplay="TOP" layoutX="227.0" onAction="#handleButtonGraficoProcedimentoMes" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Médico" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bar_chart_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="buttonGraficoProcedimentoMedico" contentDisplay="TOP" layoutX="-1.0" onAction="#handleButtonGraficoProcedimentoMedico" prefHeight="116.0" prefWidth="187.0" style="-fx-background-color: #489c5d;" text="Procedimento X Mês" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
