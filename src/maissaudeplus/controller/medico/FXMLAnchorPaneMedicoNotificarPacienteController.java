@@ -109,7 +109,7 @@ public class FXMLAnchorPaneMedicoNotificarPacienteController implements Initiali
             message.setSubject("Alerta de saúde");
             message.setText("Prezado(a) " + paciente.getNome() +
                             "\nTemos a honra de convidá-lo (a) para participar dos progamas de saúde e bem estar " 
-                          + "Oferecidos pela clínica Mais Saúde Plus!\n. "
+                          + "Oferecidos pela clínica Mais Saúde Plus!\n."
                           + "Público-alvo:\n" +
                             "Clientes da clínica Mais Saúde Plus;\n" +
                             "Temas de desataque:\n" +
