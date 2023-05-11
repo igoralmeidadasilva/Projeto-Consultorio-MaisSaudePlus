@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Classe onde tem os métodos para inserção de uma nova notificação no banco
 package maissaudeplus.model.dao;
 
 import java.sql.Connection;
@@ -16,7 +12,7 @@ import maissaudeplus.model.domain.Notificacao;
 
 
 public class NotificacaoDAO {
-    
+    // cria um objeto do tipo connection
     private Connection connection;
 
     public Connection getConnection() {
@@ -26,7 +22,7 @@ public class NotificacaoDAO {
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-    
+    //Contém o sql que faz a inserção no banco
     public void inserir(Notificacao notificacao) {
         String sql = "INSERT INTO gerarnotificacao (paciente_codpaciente, datanotificacao) VALUES (?, ?)";
         try {

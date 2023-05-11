@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Classe onde tem os métodos para manipulação da tabela procedimento no banco
 package maissaudeplus.model.dao;
 
 import java.sql.Connection;
@@ -21,7 +17,8 @@ import java.util.logging.Logger;
 import maissaudeplus.model.domain.Procedimento;
 
 public class ProcedimentoDAO {
-
+    
+    // cria um objeto do tipo connection
     private Connection connection;
     
     public Connection getConnection(){
@@ -136,7 +133,7 @@ public class ProcedimentoDAO {
         }
         return retorno;
     }
-        
+    
     public Map<Integer, Integer> listarQuantidadeProcedimentoPorMes(int ano) {
         String sql = "SELECT COUNT (cr.procedimento_codprocedimento) AS qtde, EXTRACT (MONTH FROM co.dataconsulta) AS mes " +
                         "from consultarealizada cr, consulta co " +
@@ -190,7 +187,7 @@ public class ProcedimentoDAO {
         return retorno;
     }
     
-        public Procedimento buscarPorCodigo(int codigo){
+    public Procedimento buscarPorCodigo(int codigo){
         Procedimento retorno = new Procedimento();
         String sql = "SELECT * FROM procedimento WHERE codprocedimento=?";
         try{

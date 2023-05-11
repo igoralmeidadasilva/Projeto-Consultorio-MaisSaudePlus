@@ -1,3 +1,4 @@
+// Classe responsável por startar a aplicação
 package maissaudeplus;
 
 import java.io.IOException;

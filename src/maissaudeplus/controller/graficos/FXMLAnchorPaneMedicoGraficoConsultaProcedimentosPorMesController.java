@@ -1,3 +1,5 @@
+// // Classe que contém os métodos que fazem exbir o gráfico no anchorpane
+
 package maissaudeplus.controller.graficos;
 
 import com.jfoenix.controls.JFXButton;
@@ -25,7 +27,7 @@ import maissaudeplus.model.dao.ProcedimentoDAO;
 
 public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController implements Initializable {
 
-    
+    // referencia os elementos do Anchorpane
     @FXML
     private BarChart<String, Integer> barChart;
     
@@ -49,7 +51,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController im
     public void initialize(URL url, ResourceBundle rb) {
         handleButtonRecarregar();
     } 
-    
+    // método que recarrega o gráfico
     @FXML
     public void handleButtonRecarregar(){
         barChart.getData().clear();
@@ -68,7 +70,7 @@ public class FXMLAnchorPaneMedicoGraficoConsultaProcedimentosPorMesController im
         barChart.setTitle("Procedimento X Mês");
         barChart.getData().add(serie);
     }
-    
+    // método que recebe um inteiro e retorna uma string com o nome do mês correspondente
     public String retornaNomeMes(int mes){
         switch(mes){
             case 1:

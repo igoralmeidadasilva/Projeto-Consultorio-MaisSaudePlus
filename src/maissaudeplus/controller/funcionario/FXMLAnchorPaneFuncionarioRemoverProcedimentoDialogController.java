@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Classe que contém os métodos que fazem a exclusão do procedimento
+
 package maissaudeplus.controller.funcionario;
 
 import com.jfoenix.controls.JFXButton;
@@ -19,6 +16,7 @@ import javafx.stage.Stage;
  */
 public class FXMLAnchorPaneFuncionarioRemoverProcedimentoDialogController implements Initializable {
 
+    // referencia os elementos do Anchorpane
     @FXML
     private JFXButton buttonConfirmarRemoverProcedimento;
     @FXML

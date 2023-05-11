@@ -1,3 +1,5 @@
+// classe que tem a especificção dos dados que pertencem a um procedimento
+// classe que tem os métodos get e set do procedimento
 package maissaudeplus.model.domain;
 
 public class Procedimento {

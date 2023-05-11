@@ -1,6 +1,4 @@
-//FEITO A ALTERAÇÃO DE QUANTIDADE DE PROCEDIMENTO PARA A SOMA POR PROCEDIMENTO
-// VEIFICAR SE O SQL ESTÁ CORRETO
-
+// Classe onde tem os métodos que faz um selec no banco que lista a quantidade gasta por cada procedimento
 package maissaudeplus.model.dao;
 
 import java.sql.Connection;
@@ -24,7 +22,6 @@ public class ProcedimentoGastoRelatorioDAO {
     public void setConnection(Connection connection){
         this.connection = connection;
     }
-    //########################## mudar para valor total
     public List<ProcedimentoGastoRelatorio> listar(){
         String sql = " SELECT pr.codprocedimento   AS codigo, " +
 "		pr.nomeprocedimento  AS nome, " +

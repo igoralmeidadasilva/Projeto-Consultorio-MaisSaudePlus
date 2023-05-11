@@ -1,3 +1,5 @@
+// Classe que contém os métodos que fazem a configuração para exibição do ancorpane 
+// Classe que contém os métodos responsáveis para enviar um email ao paciente que teve mais de 5 consultas com procedimentos marcados como true na flag obesidade
 package maissaudeplus.controller.medico;
 
 import com.jfoenix.controls.JFXButton;
@@ -83,7 +85,7 @@ public class FXMLAnchorPaneMedicoNotificarPacienteController implements Initiali
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-    
+    // Método que realiza o nevio de email
     public void NotificarPaciente(Paciente paciente) throws Exception {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -103,20 +105,17 @@ public class FXMLAnchorPaneMedicoNotificarPacienteController implements Initiali
 
         try{
             javax.mail.Message message = new MimeMessage(session);
-            //**************************************************
-            //Colocar E-mail do paciente no método abaixo, substituir os "...".
             Address[] destinatarios = InternetAddress.parse(paciente.getEmail());
-            //**************************************************
             message.setFrom(new InternetAddress("contato.maissaudeplus@gmail.com"));
             message.setRecipients(javax.mail.Message.RecipientType.TO, destinatarios);
             message.setSubject("Alerta de saúde");
             message.setText("Prezado(a) " + paciente.getNome() +
-                            "Temos a honra de convidá-lo (a) para participar dos progamas de saúde e bem estar " 
-                          + "Oferecidos pela clínica Mais Saúde Plus. "
+                            "\nTemos a honra de convidá-lo (a) para participar dos progamas de saúde e bem estar " 
+                          + "Oferecidos pela clínica Mais Saúde Plus!\n. "
                           + "Público-alvo:\n" +
-                            "Clientes da clínica Mais Saúde Plus" +
+                            "Clientes da clínica Mais Saúde Plus;\n" +
                             "Temas de desataque:\n" +
-                            "Sobrepeso e obesidade, Saúde pública e prevenção, Exercício físico e controle do peso corporal;\n" +
+                            "Sobrepeso e obesidade, saúde pública e prevenção, exercício físico e controle do peso corporal;\n" +
                             "Agradecemos desde já sua atenção e valiosa participação, e permanecemos à disposição para quaisquer outras dúvidas.\n" +
                             "Contato, dúvidas e sugestões:\n" +
                             "contato.maissaudeplus@gmail.com");

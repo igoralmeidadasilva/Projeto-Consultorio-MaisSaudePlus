@@ -1,3 +1,4 @@
+// classe que tem a especificção dos dados que pertencem a ao relatório gasto por procedimeto
 package maissaudeplus.model.domain;
 
 

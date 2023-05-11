@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Classe que contém os métodos que fazem alteração no cadastro do procedimento
+
 package maissaudeplus.controller.funcionario;
 
 import com.jfoenix.controls.JFXButton;
@@ -23,7 +20,7 @@ import maissaudeplus.model.domain.Procedimento;
  * @author Raphael
  */
 public class FXMLAnchorPaneFuncionarioAlterarProcedimentoDialogController implements Initializable {
-
+    // referencia os elementos do Anchorpane
     @FXML
     private JFXTextField textFieldNomeProcedimento;
     @FXML
@@ -98,8 +95,6 @@ public class FXMLAnchorPaneFuncionarioAlterarProcedimentoDialogController implem
         this.textFieldNomeProcedimento.setText(procedimento.getNomeProcedimento());
         this.textAreaDescricaoProcedimento.setText(procedimento.getDescProcedimento());
         this.textFieldValorProcedimento.setText(String.valueOf(procedimento.getValorProcedimento()));
-        //#############################################################################################################
-        //VERIFICAR SE É PARA FAZER DESSA FORMA
         this.checkBoxProcedimento.setText(Boolean.toString(procedimento.isFlagObesidade()));
     } 
     
