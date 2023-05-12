@@ -75,6 +75,8 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
 
     int TotalConsultasRealizadas = 0;
 
+    String status = "";
+
     public void initialize(URL url, ResourceBundle rb) { 
         loadComboBoxConsulta();
         loadComboBoxProcedimento();
@@ -126,12 +128,11 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
         ConsultaDAO consultaDAO = new ConsultaDAO();
         consultaDAO.setConnection(connection);
         boolean selecionado = checkBoxPaciente.isSelected();
-        String status = "";
         int consulta = consultaRealizada.getConsulta().getCodConsulta();
         if(selecionado){
             status = "Realizada";
         } else {
-            status = "Não compareceu";    
+            status = "Não compareceu";   
         }
         consultaDAO.alterarStatusConsulta(status,consulta);
     }
@@ -148,18 +149,24 @@ public class FXMLAnchorPaneMedicoRealizarConsultaController implements Initializ
               
             if(consultaRealizadaDAO.buscarConsultaRealizada(consultaRealizada)){
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setContentText("Consulta já foi registrada!");
+                alert.setContentText("Consulta já foi registrada! " + status);
                 alert.show();
             } else {
-                consultaRealizadaDAO.inserir(consultaRealizada);
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setContentText("Consulta realizada com sucesso!");
-                alert.show(); 
-                // se o teste de obesidade retornar verdadeira é carregado o anchorpane
-                Consulta consulta = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
-                Paciente paciente = consulta.getPaciente();
-                if (testeDeObesidade(paciente)){
-                    loadAnchorPaneNotificarPaciente(paciente);
+                if(status == "Realizada"){
+                    consultaRealizadaDAO.inserir(consultaRealizada);
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    alert.setContentText("Consulta registrada! " + status);
+                    alert.show(); 
+                    // se o teste de obesidade retornar verdadeira é carregado o anchorpane
+                    Consulta consulta = comboBoxSelecionarConsulta.getSelectionModel().getSelectedItem();
+                    Paciente paciente = consulta.getPaciente();
+                    if (testeDeObesidade(paciente)){
+                        loadAnchorPaneNotificarPaciente(paciente);
+                    }
+                } else {
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    alert.setContentText("Paciente " + status);
+                    alert.show(); 
                 }
             }
         } else {
