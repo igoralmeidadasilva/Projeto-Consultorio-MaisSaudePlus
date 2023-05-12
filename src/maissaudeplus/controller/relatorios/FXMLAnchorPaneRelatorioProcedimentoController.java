@@ -3,9 +3,7 @@ package maissaudeplus.controller.relatorios;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
