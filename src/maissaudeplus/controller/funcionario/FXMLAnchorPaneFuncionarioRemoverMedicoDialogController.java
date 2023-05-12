@@ -1,3 +1,10 @@
+/*###########################################################################################
+# Estudante: Júlia Borges Santos (20211si016)                                               #
+# Esta classe tem como objetivo remover Médico no banco de dados, que nada mais é que       #
+# instanciar uma conexão ao banco para remover o médico selecionado na tableview.           #
+#############################################################################################
+*/
+
 package maissaudeplus.controller.funcionario;
 
 import java.net.URL;
