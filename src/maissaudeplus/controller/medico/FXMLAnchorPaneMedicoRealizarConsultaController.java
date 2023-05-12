@@ -1,3 +1,11 @@
+/*###########################################################################################
+# Estudante: Júlia Borges Santos (20211si016)                                               #
+# Esta classe consiste em representar o processo de negócio Realizar Consulta, que é feito  #
+# pelo médico. A consulta é dada como realizada e é inserida no banco quando os valores são #
+preenchidos adequadamente.                                                                  #
+#############################################################################################
+*/
+
 package maissaudeplus.controller.medico;
 
 import java.io.IOException;

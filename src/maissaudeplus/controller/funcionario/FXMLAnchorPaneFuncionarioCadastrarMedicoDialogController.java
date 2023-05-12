@@ -1,3 +1,10 @@
+/*###########################################################################################
+# Estudante: Júlia Borges Santos (20211si016)                                               #
+# Esta classe tem como objetivo cadastrar Médico no banco de dados, que nada mais é que     #
+# instanciar uma conexão ao banco para inserir os valores passados para o objeto médico     #
+#############################################################################################
+*/
+
 package maissaudeplus.controller.funcionario;
 
 import java.net.URL;

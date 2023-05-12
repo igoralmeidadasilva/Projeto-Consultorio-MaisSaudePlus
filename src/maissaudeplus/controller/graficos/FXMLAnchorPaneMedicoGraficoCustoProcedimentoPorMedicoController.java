@@ -1,3 +1,11 @@
+/*###########################################################################################
+# Estudante: Júlia Borges Santos (20211si016)                                               #
+# Esta classe tem como função mostrar uma visão gráfica para o médico, tendo como objetivo  #
+# apresentar o custo gerado para cada médico de acordo com os procedimentos solicitados     #
+# por consulta.                                                                             #
+#############################################################################################
+*/
+
 package maissaudeplus.controller.graficos;
 
 import com.jfoenix.controls.JFXButton;
