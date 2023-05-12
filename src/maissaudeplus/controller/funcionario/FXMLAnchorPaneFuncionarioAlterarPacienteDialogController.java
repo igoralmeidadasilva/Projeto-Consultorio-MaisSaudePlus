@@ -16,7 +16,8 @@ import maissaudeplus.model.domain.Paciente;
 
 /**
  * FXML Controller class
- * Dialog responsável pela alteração dos pacientes
+ * @author Igor
+ * Dialog responsável pela alteração dos pacientes, ele permite a troca do nome, cpf, data de nscimento, sexo, peso, altura, e-mail e telefone
  */
 public class FXMLAnchorPaneFuncionarioAlterarPacienteDialogController implements Initializable {
     

@@ -21,7 +21,9 @@ import maissaudeplus.model.database.DatabaseFactory;
 
 /**
  * FXML Controller class
- *
+ * @author Igor
+ * Classe responsável por gerar um gráfico indicando quantas consultas foram realizadas por mês, note que o ano é passado de forma dinâmica para o
+ * banco isto é, o gráfico sempre será criado lavando em consideração o ano do sistema operacional.
  */
 public class FXMLAnchorPaneMedicoGraficoConsultasPorMesController implements Initializable {
     

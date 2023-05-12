@@ -27,7 +27,9 @@ import org.controlsfx.control.SearchableComboBox;
 
 /**
  * FXML Controller class
- *
+ * @author Igor
+ * Este dialog tem como objetivo alterar os dados de uma consulta ainda não realizada, os campos permitidos serem alterados são:
+ * Médico, Funconário, data da consulta, hora da consulta duração e status (agendada, realizada e cancelada);
  */
 public class FXMLAnchorPaneFuncionarioAlterarConsultaDialogController implements Initializable {
 

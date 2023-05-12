@@ -24,6 +24,11 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+/**
+ * FXML Controller class
+ * @author Igor
+ * Classe responsável por gerar um relatório da quantidade de vezes que cada procedimento foi realizado. Este relátorio pode ser salvo como pdf.
+ */
 public class FXMLAnchorPaneRelatorioProcedimentoController implements Initializable {
 
     @FXML

@@ -16,7 +16,9 @@ import maissaudeplus.model.domain.Paciente;
 
 /**
  * FXML Controller class
- * Dialog responsável pelo cadastro dos pacientes
+ * @author Igor
+ * Dialog responsável pelo cadastro dos pacientes, nesta tela o ator Funcionário inseri os campos necessários para efetuar o cadastro de 
+ * um novo paciente 
  */
 public class FXMLAnchorPaneFuncionarioCadastrarPacienteDialogController implements Initializable {
     

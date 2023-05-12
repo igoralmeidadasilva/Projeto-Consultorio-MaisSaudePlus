@@ -24,7 +24,10 @@ import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Paciente;
 /**
  * FXML Controller class
+ * @author Igor
  * Classe de controle que é responsável pelos processos relacionados a CRUDs do paciente
+ * Esta tela apresenta uma listagens dos pacientes em uma tabela, quando o paciente é selecionado ela exibe a direita da tabela as informações
+ * do paciente. Ela também é responsável pelos botões "Inserir", "Alterar" e "Remover".
  */
 public class FXMLAnchorPaneFuncionarioVisualizarPacienteController implements Initializable {
 

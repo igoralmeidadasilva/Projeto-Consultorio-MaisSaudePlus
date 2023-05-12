@@ -1,4 +1,3 @@
-
 --Criação do banco de dados
 --DROP DATABASE IF EXISTS bd_MaisSaudePlus;
 --CREATE DATABASE bd_MaisSaudePlus;
@@ -146,22 +145,55 @@ INSERT INTO Paciente (cpf, nomePaciente, dataNascimento, altura, peso, sexo, ema
 				    ('47823685212', 'EVANDRO ARAUJO', '1985-09-01', 1.67, 95, 'M', 'EvandroFlamengo@hotmail.com', '(28)99945-8621', 0);
 
 INSERT INTO Funcionario (nomefuncionario, dataadmissao, cpffuncionario, emailfuncionario, telefone)
-	  VALUES	('LUIZA MOREIRA', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845');
+	  VALUES	('LUIZA MOREIRA', '1981-01-30', '85496732149', 'luiza@MaisSaudePlus.com', '(20)99911-9845'),
+	  			  ('LEANDRO MEIRINHO', '1990-04-16', '17455869410', 'leandro@MaisSaudePlus.com', '(24)99971-1175'),
+     		 	  ('JULIANO PEREIRA', '1970-10-10', '17563487940', 'juliano@MaisSaudePlus.com', '(27)99915-1733');
 
 INSERT INTO Consulta (medico_codmedico, funcionario_codfuncionario, paciente_codpaciente, dataconsulta, horaconsulta, duracaoconsulta, statusconsulta)
-	  VALUES	(1, 1, 1, '2023-05-28', '13:00', 60, 'Agendada');
-
-INSERT INTO Procedimento(nomeProcedimento, descProcedimento, valorProcedimento, flagObesidade)	
+	  VALUES	(1, 1, 2, '2023-01-01', '14:00', 30, 'Realizada'),
+				    (2, 2, 3, '2023-01-02', '14:00', 30, 'Realizada'),
+				    (3, 1, 4, '2023-02-03', '14:00', 60, 'Realizada'),
+            (1, 3, 4, '2023-02-04', '14:00', 60, 'Realizada'),
+				    (2, 3, 3, '2023-02-05', '14:00', 45, 'Realizada'),
+				    (3, 2, 2, '2023-02-07', '14:00', 60, 'Realizada'),
+            (1, 2, 2, '2023-02-08', '14:00', 30, 'Realizada'),
+				    (2, 1, 5, '2023-03-09', '14:00', 45, 'Realizada'),
+				    (3, 1, 5, '2023-03-10', '14:00', 60, 'Realizada'),
+            (1, 1, 2, '2023-04-11', '14:00', 30, 'Realizada'),
+				    (2, 2, 2, '2023-04-12', '14:00', 60, 'Realizada'),
+				    (3, 3, 5, '2023-04-13', '14:00', 45, 'Realizada'),
+				
+	 			    (1, 1, 1, '2023-05-14', '13:00', 60, 'Agendada'),
+            (2, 1, 1, '2023-05-15', '14:00', 30, 'Agendada'),
+				    (1, 1, 1, '2023-05-16', '14:00', 45, 'Agendada'),
+				    (2, 1, 1, '2023-05-17', '14:00', 60, 'Agendada');
+				
+INSERT INTO Procedimento (nomeProcedimento, descProcedimento, valorProcedimento, flagObesidade)	
     VALUES
-          ('Não há procedimento', 'Não há procedimento',0,false),
-          ('Hemograma','Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)', 10.00, true),
-          ('Cintilografia', 'Cintilografia para pesquisa de refluxo gastro-esofágico', 20.00, true),
-          ('Hemoglobina glicada', 'Hemoglobina glicada (A1 total), dosagem', 18.00, true) ;     
-
+            ('Não há procedimento', 'Não há procedimento',0 ,false),
+            ('Hemograma','Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)', 10.00, true),
+            ('Cintilografia', 'Cintilografia para pesquisa de refluxo gastro-esofágico', 20.00, true),
+            ('Hemoglobina glicada', 'Hemoglobina glicada (A1 total), dosagem', 18.00, true),
+            ('Miopatias', 'Doença de natureza muscular que atingem exclusivamente os músculos (1C)', 30.00, false);
 
 INSERT INTO Medicamento(nomeMedicamento,descMedicamento,valorMedicamento)
     VALUES
-          ('Não há medicamento','Não há medicamento',0),
-          ('Dietilpropiona', 'Dietilpropiona atua no sistema nervoso central, estimulando os neurônios a liberarem ou manterem elevados os níveis das catecolaminas, um grupo de neurotransmissores do qual fazem parte a dopamina e a norepinefrina.', 150.00),
-          ('Sibutramina', 'Sibutramina atua no Sistema Nervoso Central (SNC) para inibir o apetite e aumentar a sensação de saciedade durante a alimentação', 50.00); 
+            ('Não há medicamento','Não há medicamento',0),
+            ('Dietilpropiona', 'Dietilpropiona atua no sistema nervoso central, estimulando os neurônios a liberarem ou manterem elevados os níveis das catecolaminas, um grupo de neurotransmissores do qual fazem parte a dopamina e a norepinefrina.', 150.00),
+            ('Sibutramina', 'Sibutramina atua no Sistema Nervoso Central (SNC) para inibir o apetite e aumentar a sensação de saciedade durante a alimentação', 50.00),
+            ('Dipirona', 'analgésico e antitérmico utilizado em enfermidades que tenham dor e febre como sintomas', 10.00);
+
+INSERT INTO ConsultaRealizada (consulta_codconsulta, procedimento_codprocedimento, medicamento_codmedicamento)
+	  VALUES	(1, 1, 1),
+	  			  (2, 5, 2),
+	  			  (3, 3, 2),
+	  			  (4, 2, 1),	  
+	  			  (5, 5, 3),	  
+	  			  (6, 4, 2),	  
+	  			  (7, 3, 3),				
+	  			  (8, 5, 3),				
+	  			  (9, 4, 3),				
+	  			  (10, 2, 4),
+				    (11, 2, 4),
+				    (12, 2, 4);
 				

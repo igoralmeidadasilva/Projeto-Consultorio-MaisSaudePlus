@@ -15,7 +15,7 @@
             <Image url="@images/backgroung.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="3.0" layoutY="481.0" prefHeight="17.0" prefWidth="308.0" text="Software de gerenciamento Mais Saúde Plus version 2.0">
+      <Label layoutX="3.0" layoutY="481.0" prefHeight="17.0" prefWidth="308.0" text="Software de gerenciamento Mais Saúde Plus version 1.0">
          <font>
             <Font name="Verdana" size="10.0" />
          </font>

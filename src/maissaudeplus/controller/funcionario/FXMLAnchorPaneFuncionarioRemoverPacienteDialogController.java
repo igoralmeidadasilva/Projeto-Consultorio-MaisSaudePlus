@@ -9,7 +9,9 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- * Dialog responsável pela remoção dos pacientes
+ * @author Igor
+ * Dialog responsável pela remoção dos pacientes, está tela mostra apenas uma mensagem perguntando se o funcionário realmente 
+ * deseja remover o paciente.
  */
 public class FXMLAnchorPaneFuncionarioRemoverPacienteDialogController implements Initializable {
 

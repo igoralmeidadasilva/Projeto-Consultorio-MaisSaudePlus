@@ -33,7 +33,10 @@ import org.controlsfx.control.SearchableComboBox;
 
 /**
  * FXML Controller class
- * Dialog que é responsável pelos processos relacionados a Agendar Consulta
+ * @author Igor
+ * Dialog que é responsável pelos processos relacionados a Agendar Consulta, nele você encontra uma tabela mostrando os pacientes cadastrados
+ * e a direita desta tabela, os campos que devem ser preenchidos para o cadastro de uma nova consulta. Note que sempre que uma nova consulta
+ * é inserida o seu Status é "Agendada".
  */
 public class FXMLAnchorPaneFuncionarioCadastrarConsultaDialogController implements Initializable {
 

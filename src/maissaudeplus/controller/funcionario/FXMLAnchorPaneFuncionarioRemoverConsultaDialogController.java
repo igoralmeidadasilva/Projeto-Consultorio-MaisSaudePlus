@@ -9,7 +9,9 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
+ * @author Igor
+ *  Dialog responsável pela remoção das consultas, está tela mostra apenas uma mensagem perguntando se o funcionário realmente 
+ * deseja remover a consulta.
  */
 public class FXMLAnchorPaneFuncionarioRemoverConsultaDialogController implements Initializable {
 

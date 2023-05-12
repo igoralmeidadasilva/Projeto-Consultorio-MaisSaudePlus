@@ -26,7 +26,10 @@ import maissaudeplus.model.database.DatabaseFactory;
 import maissaudeplus.model.domain.Consulta;
 /**
  * FXML Controller class
- *
+ * @author Igor
+ *  Tela que é responsável pelos processos de CRUDs relacionados a Consulta, nele você encontra uma tabela mostrando as consultas com o status
+ * "Agendada" (Realizadas e Canceladas não estão sendo mostradas), assim como mostra a direita da tabela, os campos detalhados das consultas.
+ * Ainda nesta tela, temos os botões "Inserir", "Alterar" e "Remover" relacionados a consulta.
  */
 public class FXMLAnchorPaneFuncionarioVisualizarConsultaController implements Initializable {
  

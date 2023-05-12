@@ -263,7 +263,7 @@ public class ConsultaDAO {
 
     public Map<Integer, Integer> listarQuantidadeConsultasPorMes(int ano) {
         String sql = "SELECT COUNT(codconsulta) AS qtde, EXTRACT (MONTH FROM dataconsulta) AS mes FROM consulta "
-                + "WHERE EXTRACT (YEAR FROM dataconsulta)=? GROUP BY mes ORDER BY mes;";
+                + "WHERE EXTRACT (YEAR FROM dataconsulta)=? AND statusconsulta = 'Realizada' GROUP BY mes ORDER BY mes;";
         Map<Integer, Integer> retorno = new HashMap<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
