@@ -23,7 +23,7 @@
          </image>
       </ImageView>
       <Separator layoutX="25.0" layoutY="187.0" prefHeight="3.0" prefWidth="750.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-      <Label layoutX="388.0" layoutY="209.0" prefHeight="27.0" prefWidth="509.0" text="Lançamento oficial do software &quot;Mais Sáude Plus&quot;.">
+      <Label layoutX="388.0" layoutY="209.0" prefHeight="27.0" prefWidth="509.0" text="Lançamento oficial do software &quot;Mais Saúde Plus&quot;.">
          <font>
             <Font name="Segoe UI Semibold" size="21.0" />
          </font>
